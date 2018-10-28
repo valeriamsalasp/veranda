@@ -4,14 +4,49 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+
+<ion-content>
+  <ion-searchbar (ionInput)="getNote($event)"></ion-searchbar>
+
+  <ion-card>
+    <ion-card-header>
+      Note title
+    </ion-card-header>
+    <ion-card-content>
+      Note description
+    </ion-card-content>
+  </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        1 of 3
+      </ion-col>
+      <ion-col col-auto>
+        Variable width content
+      </ion-col>
+      <ion-col>
+        3 of 3
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        1 of 4
+      </ion-col>
+      <ion-col>
+        2 of 4
+      </ion-col>
+      <ion-col col-auto>
+        <ion-input placeholder="Variable width input"></ion-input>
+      </ion-col>
+      <ion-col>
+        4 of 4
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+    <ion-footer padding>
+      <button ion-button icon-only (click)="goCreate()">
+        <ion-icon name="create" ></ion-icon>
+      </button>
+    </ion-footer>
 </ion-content>
