@@ -7,10 +7,10 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-list>
+    <ion-list inset>
 
         <ion-item>
-          <ion-textarea placeholder="Title"></ion-textarea>
+          <ion-input type="text" placeholder="Title"></ion-input>
         </ion-item>
       
         <ion-item>
@@ -18,5 +18,17 @@
         </ion-item>
       
       </ion-list>
+
+      <ion-footer >
+          <ion-grid>
+              <ion-row>
+              <ion-col style="text-align: center">
+                <button ion-button icon-only>
+                 <ion-icon name="checkmark-circle"></ion-icon>
+                </button>
+              </ion-col>
+              </ion-row>
+            </ion-grid>
+      </ion-footer>
 
 </ion-content>

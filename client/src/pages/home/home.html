@@ -1,10 +1,27 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
+
+    <ion-toolbar>
+        <button ion-button icon-only menuToggle left>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title style="text-align: center">
+          Home
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
-
-
+<ion-menu [content]="mycontent" type="overlay">
+    <ion-content>
+      <ion-list>
+          <button ion-button icon-end (click)="showConfirm()">
+              Log out
+              <ion-icon name="log-out"></ion-icon>
+          </button>
+          <ion-item menuClose detail-none>Close Menu</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  
+  <ion-nav #mycontent [root]="rootPage"></ion-nav>
 <ion-content>
   <ion-searchbar (ionInput)="getNote($event)"></ion-searchbar>
 
@@ -16,37 +33,16 @@
       Note description
     </ion-card-content>
   </ion-card>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        1 of 3
-      </ion-col>
-      <ion-col col-auto>
-        Variable width content
-      </ion-col>
-      <ion-col>
-        3 of 3
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        1 of 4
-      </ion-col>
-      <ion-col>
-        2 of 4
-      </ion-col>
-      <ion-col col-auto>
-        <ion-input placeholder="Variable width input"></ion-input>
-      </ion-col>
-      <ion-col>
-        4 of 4
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 
-    <ion-footer padding>
-      <button ion-button icon-only (click)="goCreate()">
-        <ion-icon name="create" ></ion-icon>
-      </button>
-    </ion-footer>
+<ion-footer >
+    <ion-grid>
+        <ion-row>
+        <ion-col style="text-align: center">
+          <button ion-button icon-only (click)="goCreate()">
+           <ion-icon name="create"></ion-icon>
+          </button>
+        </ion-col>
+        </ion-row>
+      </ion-grid>
+</ion-footer>
 </ion-content>
