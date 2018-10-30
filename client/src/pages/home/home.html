@@ -1,11 +1,11 @@
-<ion-header>
+<ion-header style="text-align: center">
 
-    <ion-toolbar>
+    <ion-toolbar style="text-align: center">
         <button ion-button icon-only menuToggle left>
           <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title style="text-align: center">
-          Home
+        <ion-title>
+          Notes
         </ion-title>
     </ion-toolbar>
 </ion-header>
@@ -23,16 +23,35 @@
   
   <ion-nav #mycontent [root]="rootPage"></ion-nav>
 <ion-content>
-  <ion-searchbar (ionInput)="getNote($event)"></ion-searchbar>
+  
+  <ion-searchbar (ionInput)="getNote($event)" placeholder="Search your notes"> </ion-searchbar>
 
-  <ion-card>
-    <ion-card-header>
-      Note title
-    </ion-card-header>
-    <ion-card-content>
-      Note description
-    </ion-card-content>
-  </ion-card>
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-card style="background-color: thistle">
+      <ion-card-header>
+        Note title
+      </ion-card-header>
+      <ion-card-content>
+        Note description
+      </ion-card-content>
+    </ion-card> 
+    </ion-col>
+    <ion-col>
+    <ion-card style="background-color: lightsteelblue">
+      <ion-card-header>
+        Note title
+      </ion-card-header>
+      <ion-card-content>
+        Note description
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+  </ion-row>
+</ion-grid>
+
+
 
 <ion-footer >
     <ion-grid>
