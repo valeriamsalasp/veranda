@@ -1,17 +1,48 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+    <ion-toolbar>
+        <button ion-button icon-only menuToggle left>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title style="text-align: center">
+          Home
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-menu [content]="mycontent" type="overlay">
+    <ion-content>
+      <ion-list>
+          <button ion-button icon-end (click)="showConfirm()">
+              Log out
+              <ion-icon name="log-out"></ion-icon>
+          </button>
+          <ion-item menuClose detail-none>Close Menu</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  
+  <ion-nav #mycontent [root]="rootPage"></ion-nav>
+<ion-content>
+  <ion-searchbar (ionInput)="getNote($event)"></ion-searchbar>
+
+  <ion-card>
+    <ion-card-header>
+      Note title
+    </ion-card-header>
+    <ion-card-content>
+      Note description
+    </ion-card-content>
+  </ion-card>
+
+<ion-footer >
+    <ion-grid>
+        <ion-row>
+        <ion-col style="text-align: center">
+          <button ion-button icon-only (click)="goCreate()">
+           <ion-icon name="create"></ion-icon>
+          </button>
+        </ion-col>
+        </ion-row>
+      </ion-grid>
+</ion-footer>
 </ion-content>
