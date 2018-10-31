@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { Validators } from '@angular/forms'
 import { RestProvider } from '../../providers/rest/rest';
 
+
 @Component({
     selector: 'page-register',
     templateUrl: 'register.html'

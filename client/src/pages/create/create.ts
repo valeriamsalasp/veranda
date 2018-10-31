@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
+import { RestProvider } from '../../providers/rest/rest';
 
 @Component({
   selector: 'page-create',
@@ -7,7 +8,7 @@ import { NavController, AlertController } from 'ionic-angular';
 })
 export class CreatePage {
 title:string;
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController,  public restProvider: RestProvider) {
 
   }
   showRadio() {
@@ -30,6 +31,10 @@ title:string;
       }
     });
     alert.present();
+  }
+
+  createNote(){
+
   }
 }
 

@@ -1,3 +1,18 @@
 page-login {
+    .loginbutton{
+        background-color: #311b92;
+    }
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
 
+    .myview{
+        background-image: url('./assets/imgs/background.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
 }
