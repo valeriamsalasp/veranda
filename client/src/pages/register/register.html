@@ -10,6 +10,11 @@
             <ion-label floating>Name</ion-label>
             <ion-input type="text" [(ngModel)]="name" name="name" aria-required="true"></ion-input>
         </ion-item>
+
+        <ion-item>
+            <ion-label floating>Last Name</ion-label>
+            <ion-input type="text" [(ngModel)]="lastname" name="lastname" aria-required="true"></ion-input>
+        </ion-item>
         
         <ion-item>
             <ion-label floating>Email</ion-label>
@@ -21,5 +26,5 @@
             <ion-input type="password" [(ngModel)]="password" name="password" aria-required="true"></ion-input>
         </ion-item>
     </ion-list>
-    <button ion-button block (click)="register()">Register</button>
+    <button ion-button block round class="registerbutton" (click)="login()" padding>Register</button><br>
 </ion-content>

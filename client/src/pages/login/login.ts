@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { HomePage } from '../home/home';
@@ -14,8 +15,9 @@ export class LoginPage {
     password:string;
 
     constructor(public navCtrl: NavController) {
-
+        
     }
+
     login(){
         console.log("Email:" +this.email);
         console.log("Password:" +this.password);

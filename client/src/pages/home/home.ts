@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController, AlertController } from 'ionic-angular';
-import {CreatePage} from '../create/create';
+import { CreatePage } from '../create/create';
 import { LoginPage } from '../login/login';
 import { RestProvider } from '../../providers/rest/rest';
 

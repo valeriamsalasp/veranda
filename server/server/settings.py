@@ -82,10 +82,10 @@ WSGI_APPLICATION = 'server.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'verandadb',
         'USER': 'postgres',
-        'PASSWORD': '25345277',
+        'PASSWORD': '1234',
         'HOST': 'localhost',
         'PORT': '5432',
     }
