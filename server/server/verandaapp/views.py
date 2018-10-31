@@ -3,7 +3,8 @@ from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from .models import Note
 from server.verandaapp.serializers import UserSerializer, NoteSerializer
-
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.response import Response
 # Create your views here.
 
 
@@ -17,3 +18,5 @@ class NoteViewSet(viewsets.ModelViewSet):
 
     queryset = Note.objects.all()
     serializer_class = NoteSerializer
+    def get_paginated_response(self, data):
+        return Response(data)
