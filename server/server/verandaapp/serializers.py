@@ -2,14 +2,16 @@ from django.contrib.auth.models import User
 from rest_framework import serializers
 from .models import Note
 
-
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'url', 'email', 'password', 'first_name', 'last_name')
+        id = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+        password = serializers.CharField(allow_blank=True, max_length=100, required=False)
+
+        fields = ('id', 'username','password', 'email', 'first_name', 'last_name')
     
-    def create(self,validated_data):
+    def create(self, validated_data):
         password = validated_data.pop('password', None)
         instance = self.Meta.model(**validated_data)
         if password is not None:
@@ -29,8 +31,8 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 
-class NoteSerializer(serializers.HyperlinkedModelSerializer):
+class NoteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Note
-        fields = ('id', 'url', 'title', 'description', 'user_id')
+        fields = ('id', 'title', 'description', 'user_id')

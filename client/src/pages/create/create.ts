@@ -25,8 +25,8 @@ title:string;
     alert.addButton({
       text: 'OK',
       handler: data => {
-        this.testRadioOpen = false;
-        this.testRadioResult = data;
+        //this.testRadioOpen = false;
+        //this.testRadioResult = data;
       }
     });
     alert.present();
