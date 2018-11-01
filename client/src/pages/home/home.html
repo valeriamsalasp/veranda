@@ -2,7 +2,7 @@
 
     <ion-toolbar style="text-align: center">
         <button ion-button icon-only menuToggle left>
-          <ion-icon name="menu"></ion-icon>
+          <ion-icon class="menubutton" name="menu"></ion-icon>
         </button>
         <ion-title>
           Notes
@@ -36,17 +36,15 @@
 <ion-grid>
   <ion-row>
 
-    <ion-col>
-        <ion-item *ngFor="let note of notes">  
-      <ion-card style="background-color: thistle">
+    <ion-col *ngFor="let note of notes" col-6 no-padding> 
+      <ion-card style="background-color: thistle" (click)="viewNote()">
       <ion-card-header>
-          {{note.title}}
+      {{note.title}}
       </ion-card-header>
       <ion-card-content>
           {{note.description}}
       </ion-card-content>
     </ion-card> 
-  </ion-item>
     </ion-col>
   </ion-row>
 </ion-grid>
@@ -57,7 +55,7 @@
     <ion-grid>
         <ion-row>
         <ion-col style="text-align: center">
-          <button ion-button icon-only (click)="goCreate()">
+          <button ion-button icon-only round (click)="goCreate()" class="createbutton">
            <ion-icon name="create"></ion-icon>
           </button>
         </ion-col>
