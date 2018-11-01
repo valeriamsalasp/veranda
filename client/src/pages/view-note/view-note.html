@@ -1,25 +1,23 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      New note
-    </ion-title>
-    <ion-buttons end>
-      <button ion-button class="colorbutton" icon-only (click)="showRadio()">
-        <ion-icon name="color-palette"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-toolbar> 
-</ion-header>
-
+    <ion-toolbar>
+      <ion-buttons end>
+        <button ion-button class="deletebutton" icon-only (click)="deleteNote()">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar> 
+  </ion-header>
 <ion-content padding>
+    <h2>{{note.title}}</h2>
+    <p>{{note.description}}</p>
     <ion-list inset>
 
         <ion-item>
-          <ion-input type="text" placeholder="Title" [(ngModel)]="note.title" name="title"></ion-input>
+          <ion-input type="text" placeholder="Title" name="title"></ion-input>
         </ion-item>
       
         <ion-item>
-          <ion-textarea placeholder="Note" [(ngModel)]="note.description" name="description"></ion-textarea>
+          <ion-textarea placeholder="Note" name="description"></ion-textarea>
         </ion-item>
       
       </ion-list>
@@ -36,3 +34,4 @@
         </ion-row>
       </ion-grid>
 </ion-footer>
+ 

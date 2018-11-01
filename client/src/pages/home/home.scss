@@ -6,4 +6,9 @@ page-home {
     .menubutton{
         color: #311b92;
     }
+    
+    infinite-scroll{
+        $infinite-scroll-loading-text-margin-bottom: 32px;
+        $infinite-scroll-loading-margin-end: 40px;	
+    }
 }

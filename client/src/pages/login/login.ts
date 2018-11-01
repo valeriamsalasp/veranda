@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgModule } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ViewController } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { HomePage } from '../home/home';
 
@@ -14,7 +14,7 @@ export class LoginPage {
     email:string;
     password:string;
 
-    constructor(public navCtrl: NavController) {
+    constructor(public navCtrl: NavController, private viewCtrl: ViewController) {
         
     }
 

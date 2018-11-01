@@ -11,6 +11,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { CreatePage } from '../pages/create/create';
+import {ViewNotePage} from '../pages/view-note/view-note'
 import { RestProvider } from '../providers/rest/rest';
 
 @NgModule({
@@ -19,7 +20,8 @@ import { RestProvider } from '../providers/rest/rest';
     CreatePage,
     HomePage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    ViewNotePage
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { RestProvider } from '../providers/rest/rest';
     CreatePage,
     HomePage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    ViewNotePage
   ],
   providers: [
     StatusBar,

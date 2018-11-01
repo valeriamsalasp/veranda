@@ -35,20 +35,24 @@
 
 <ion-grid>
   <ion-row>
-
     <ion-col *ngFor="let note of notes" col-6 no-padding> 
       <ion-card style="background-color: thistle" (click)="viewNote()">
       <ion-card-header>
       {{note.title}}
       </ion-card-header>
       <ion-card-content>
-          {{note.description}}
+      {{note.description}}
       </ion-card-content>
     </ion-card> 
     </ion-col>
   </ion-row>
 </ion-grid>
 
+  <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)" ng-if="!noMoreItemsAvailable" on-infinite="loadMore(10)" distance="1%">>
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
+
+</ion-content>
 
 
 <ion-footer >
@@ -62,4 +66,3 @@
         </ion-row>
       </ion-grid>
 </ion-footer>
-</ion-content>

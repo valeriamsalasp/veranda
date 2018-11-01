@@ -44,7 +44,7 @@ export class RestProvider {
       });
     });
   }
-  addNote(data) {
+  createNote(data) {
     return new Promise((resolve, reject) => {
       this.http.post(this.apiUrl+'/note/', JSON.stringify(data), httpOptions)
         .subscribe(res => {

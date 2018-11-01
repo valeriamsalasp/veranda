@@ -3,18 +3,35 @@ import { NavController, ViewController, AlertController } from 'ionic-angular';
 import { CreatePage } from '../create/create';
 import { LoginPage } from '../login/login';
 import { RestProvider } from '../../providers/rest/rest';
+import { ViewNotePage } from '../view-note/view-note';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  notes: any;
-
+  notes: any[] = [];
+  
   constructor(public navCtrl: NavController, private viewCtrl: ViewController, public alertCtrl: AlertController, public restProvider: RestProvider) {
     this.getNotes();
+    // for (let note = 0; note < 5; note++) {
+    //   this.notes.push( this.notes.length );
+    // }
   }
+
+  // doInfinite(infiniteScroll) {
+  //   console.log('Begin async operation');
+
+  //   setTimeout(() => {
+  //     for (let note = 0; note < 5; note++) {
+  //       this.notes.push( this.notes.length );
+  //     }
+
+  //     console.log('Async operation has ended');
+  //     infiniteScroll.complete();
+  //   }, this.notes.length);
+  // }
+
   getNotes() {
     this.restProvider.getNotes()
       .then(data => {
@@ -48,5 +65,8 @@ export class HomePage {
       ]
     });
     confirm.present();
+  }
+  viewNote(){
+    this.navCtrl.push(ViewNotePage);
   }
 }

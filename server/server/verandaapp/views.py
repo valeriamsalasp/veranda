@@ -18,5 +18,6 @@ class NoteViewSet(viewsets.ModelViewSet):
 
     queryset = Note.objects.all()
     serializer_class = NoteSerializer
+    pagination_class: None
     def get_paginated_response(self, data):
         return Response(data)
