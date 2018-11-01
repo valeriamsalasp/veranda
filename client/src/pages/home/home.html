@@ -23,31 +23,31 @@
   
   <ion-nav #mycontent [root]="rootPage"></ion-nav>
 <ion-content>
+
+    <!-- <ion-list inset>
+        <ion-item *ngFor="let note of notes">
+          <h2>{{note.title}}</h2>
+          <p>{{note.description}}</p>
+        </ion-item>
+      </ion-list> -->
   
   <ion-searchbar (ionInput)="getNote($event)" placeholder="Search your notes"> </ion-searchbar>
 
 <ion-grid>
   <ion-row>
+
     <ion-col>
+        <ion-item *ngFor="let note of notes">  
       <ion-card style="background-color: thistle">
       <ion-card-header>
-        Note title
+          {{note.title}}
       </ion-card-header>
       <ion-card-content>
-        Note description
+          {{note.description}}
       </ion-card-content>
     </ion-card> 
+  </ion-item>
     </ion-col>
-    <ion-col>
-    <ion-card style="background-color: lightsteelblue">
-      <ion-card-header>
-        Note title
-      </ion-card-header>
-      <ion-card-content>
-        Note description
-      </ion-card-content>
-    </ion-card>
-  </ion-col>
   </ion-row>
 </ion-grid>
 
