@@ -6,8 +6,8 @@
   "type": "ionic-angular",
   "proxies": [
     {
-      "path": "/api",
-      "proxyUrl": "http://localhost:8000/users"
+      "path": "/",
+      "proxyUrl": "http://localhost:8000/"
     }
   ]
-}
+}[]
