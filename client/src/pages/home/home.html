@@ -1,52 +1,51 @@
 <ion-header style="text-align: center">
-
-    <ion-toolbar style="text-align: center">
-        <button ion-button icon-only menuToggle left>
-          <ion-icon class="menubutton" name="menu"></ion-icon>
-        </button>
-        <ion-title>
-          Notes
-        </ion-title>
-    </ion-toolbar>
+  <ion-toolbar style="text-align: center">
+    <button ion-button icon-only menuToggle left>
+      <ion-icon class="menubutton" name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>
+      Notes
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
 <ion-menu [content]="mycontent" type="overlay">
-    <ion-content>
-      <ion-list>
-          <button ion-button icon-end (click)="showConfirm()">
-              Log out
-              <ion-icon name="log-out"></ion-icon>
-          </button>
-          <ion-item menuClose detail-none>Close Menu</ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
-  
-  <ion-nav #mycontent [root]="rootPage"></ion-nav>
+  <ion-content>
+    <ion-list>
+      <button ion-button icon-end (click)="showConfirm()">
+        Log out
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+      <ion-item menuClose detail-none>Close Menu</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
 <ion-content>
 
-    <!-- <ion-list inset>
+  <!-- <ion-list inset>
         <ion-item *ngFor="let note of notes">
           <h2>{{note.title}}</h2>
           <p>{{note.description}}</p>
         </ion-item>
       </ion-list> -->
-  
+
   <ion-searchbar (ionInput)="getNote($event)" placeholder="Search your notes"> </ion-searchbar>
 
-<ion-grid>
-  <ion-row>
-    <ion-col *ngFor="let note of notes" col-6 no-padding> 
-      <ion-card style="background-color: thistle" (click)="viewNote()">
-      <ion-card-header>
-      {{note.title}}
-      </ion-card-header>
-      <ion-card-content>
-      {{note.description}}
-      </ion-card-content>
-    </ion-card> 
-    </ion-col>
-  </ion-row>
-</ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let note of notes" col-6 no-padding>
+        <ion-card style="background-color: thistle" (click)="viewNote()">
+          <ion-card-header>
+            {{note.title}}
+          </ion-card-header>
+          <ion-card-content>
+            {{note.description}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)" ng-if="!noMoreItemsAvailable" on-infinite="loadMore(10)" distance="1%">>
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
@@ -55,14 +54,14 @@
 </ion-content>
 
 
-<ion-footer >
-    <ion-grid>
-        <ion-row>
-        <ion-col style="text-align: center">
-          <button ion-button icon-only round (click)="goCreate()" class="createbutton">
-           <ion-icon name="create"></ion-icon>
-          </button>
-        </ion-col>
-        </ion-row>
-      </ion-grid>
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col style="text-align: center">
+        <button ion-button icon-only round (click)="goCreate()" class="createbutton">
+          <ion-icon name="create"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-footer>

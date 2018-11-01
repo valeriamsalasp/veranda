@@ -10,10 +10,9 @@ import { ViewNotePage } from '../view-note/view-note';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  notes: any[] = [];
+  notes: any;
   
   constructor(public navCtrl: NavController, private viewCtrl: ViewController, public alertCtrl: AlertController, public restProvider: RestProvider) {
-    this.getNotes();
     // for (let note = 0; note < 5; note++) {
     //   this.notes.push( this.notes.length );
     // }
@@ -31,6 +30,7 @@ export class HomePage {
   //     infiniteScroll.complete();
   //   }, this.notes.length);
   // }
+  ionViewDidEnter(){this.getNotes()}
 
   getNotes() {
     this.restProvider.getNotes()
@@ -39,12 +39,15 @@ export class HomePage {
         console.log(this.notes);
       });
   }
+
   goCreate() {
     this.navCtrl.push(CreatePage)
   }
+
   ionViewWillEnter() {
     this.viewCtrl.showBackButton(false);
   }
+
   showConfirm() {
     const confirm = this.alertCtrl.create({
       title: 'Are you sure you want to log out?',

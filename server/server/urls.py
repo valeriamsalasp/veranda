@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls import url, include
+from django.urls import path, include
 from rest_framework import routers
 from server.verandaapp import views
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 router = routers.DefaultRouter()
 router.register(r'note', views.NoteViewSet)
@@ -25,5 +27,9 @@ router.register(r'user', views.UserViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace = 'rest_framework'))
+    url(r'^api-auth/', include('rest_framework.urls', namespace = 'rest_framework')),
+    # path('', include('urls')),
+    # path('api-auth/', include('rest_framework.urls')),
+    url(r'^api/token/$', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    url(r'^api/token/refresh/$', TokenRefreshView.as_view(), name='token_refresh'),
 ]

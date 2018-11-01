@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, ViewController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
+import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-create',
@@ -13,7 +14,7 @@ title:string;
  
   }
 
-  note = {title:"", description:"", user_id:2};
+  note = {title:"", description:"", user_id:12};
   showRadio() {
     let alert = this.alertCtrl.create();
     alert.setTitle('Choose note color');
