@@ -44,5 +44,15 @@ export class RestProvider {
       });
     });
   }
+  addNote(data) {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.apiUrl+'/note/', JSON.stringify(data), httpOptions)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
 }
 

@@ -8,9 +8,12 @@ import { RestProvider } from '../../providers/rest/rest';
 })
 export class CreatePage {
 title:string;
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController,  public restProvider: RestProvider) {
 
+note = {title:"", description:""};
+
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController,  public restProvider: RestProvider) {
   }
+
   showRadio() {
     let alert = this.alertCtrl.create();
     alert.setTitle('Choose note color');
@@ -33,8 +36,13 @@ title:string;
     alert.present();
   }
 
-  createNote(){
-
+  createNote() {
+    console.log(this.note);
+    this.restProvider.addNote(this.note).then((result) => {
+        console.log(result);
+    }, (err) => {
+        console.log(err);
+    });
   }
 }
 

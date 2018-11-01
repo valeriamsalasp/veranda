@@ -31,6 +31,5 @@ export class RegisterPage {
         }, (err) => {
             console.log(err);
         });
-            }
-
+    }
 }

@@ -15,11 +15,11 @@
     <ion-list inset>
 
         <ion-item>
-          <ion-input type="text" placeholder="Title" [(ngModel)]="title" name="title"></ion-input>
+          <ion-input type="text" placeholder="Title" [(ngModel)]="note.title" name="title"></ion-input>
         </ion-item>
       
         <ion-item>
-          <ion-textarea placeholder="Note"></ion-textarea>
+          <ion-textarea placeholder="Note" [(ngModel)]="note.description" name="description"></ion-textarea>
         </ion-item>
       
       </ion-list>
@@ -28,12 +28,11 @@
           <ion-grid>
               <ion-row>
               <ion-col style="text-align: center">
-                <button ion-button icon-only>
-                 <ion-icon name="checkmark-circle" (click)="createNote()"></ion-icon>
+                <button ion-button icon-only (click)="createNote()">
+                 <ion-icon name="checkmark-circle" ></ion-icon>
                 </button>
               </ion-col>
               </ion-row>
             </ion-grid>
       </ion-footer>
-
 </ion-content>
