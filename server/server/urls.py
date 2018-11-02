@@ -30,6 +30,6 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace = 'rest_framework')),
     # path('', include('urls')),
     # path('api-auth/', include('rest_framework.urls')),
-    url(r'^api/token/$', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    url(r'^api/token/refresh/$', TokenRefreshView.as_view(), name='token_refresh'),
+    # url(r'^api/token/$', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    # url(r'^api/token/refresh/$', TokenRefreshView.as_view(), name='token_refresh'),
 ]

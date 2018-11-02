@@ -4,33 +4,48 @@ import { CreatePage } from '../create/create';
 import { LoginPage } from '../login/login';
 import { RestProvider } from '../../providers/rest/rest';
 import { ViewNotePage } from '../view-note/view-note';
+import { _appIdRandomProviderFactory } from '@angular/core/src/application_tokens';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  notes: any;
-  
+  searchText: string;
+  notes: any[] = [];
+  note = {
+    title: '',
+    description: '',
+    id: 0
+  }
+  public isSearchbarOpened = false;
   constructor(public navCtrl: NavController, private viewCtrl: ViewController, public alertCtrl: AlertController, public restProvider: RestProvider) {
-    // for (let note = 0; note < 5; note++) {
-    //   this.notes.push( this.notes.length );
-    // }
+    this.initializeItems();
   }
 
-  // doInfinite(infiniteScroll) {
-  //   console.log('Begin async operation');
+  initializeItems() {
+    this.notes;
+  }
 
-  //   setTimeout(() => {
-  //     for (let note = 0; note < 5; note++) {
-  //       this.notes.push( this.notes.length );
-  //     }
+  getItems(ev: any) {
+    // Reset items back to all of the items
+    this.initializeItems();
 
-  //     console.log('Async operation has ended');
-  //     infiniteScroll.complete();
-  //   }, this.notes.length);
-  // }
-  ionViewDidEnter(){this.getNotes()}
+    // set val to the value of the searchbar
+    const val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.notes = this.notes.filter((note) => {
+        return (note.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+  }
+
+  onCancel(ev) {
+    this.initializeItems();
+  }
+  ionViewDidEnter() { this.getNotes() }
 
   getNotes() {
     this.restProvider.getNotes()
@@ -41,7 +56,7 @@ export class HomePage {
   }
 
   goCreate() {
-    this.navCtrl.push(CreatePage)
+    this.navCtrl.push(CreatePage);
   }
 
   ionViewWillEnter() {
@@ -69,7 +84,25 @@ export class HomePage {
     });
     confirm.present();
   }
-  viewNote(){
+  viewNote() {
+    this.navCtrl.push(ViewNotePage);
+  }
+
+  // deleteNote(){
+  //   this.restProvider.deleteNote()
+  //    .then(data=>{
+  //       this.notes = data;
+  //       console.log(this.notes);
+  //    });
+  // }
+
+  getSingularNote() {
+    this.restProvider.getSingularNote(this.note.id)
+      .then(data => {
+        this.notes = data;
+        console.log(this.notes);
+      });
     this.navCtrl.push(ViewNotePage);
   }
 }
+

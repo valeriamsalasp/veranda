@@ -8,31 +8,31 @@
         <ion-icon name="color-palette"></ion-icon>
       </button>
     </ion-buttons>
-  </ion-toolbar> 
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-    <ion-list inset>
+  <ion-list inset>
 
-        <ion-item>
-          <ion-input type="text" placeholder="Title" [(ngModel)]="note.title" name="title"></ion-input>
-        </ion-item>
-      
-        <ion-item>
-          <ion-textarea placeholder="Note" [(ngModel)]="note.description" name="description"></ion-textarea>
-        </ion-item>
-      
-      </ion-list>
+    <ion-item>
+      <ion-input type="text" placeholder="Title" [(ngModel)]="note.title" name="title"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea placeholder="Note" [(ngModel)]="note.description" name="description"></ion-textarea>
+    </ion-item>
+
+  </ion-list>
 </ion-content>
 
-<ion-footer >
-    <ion-grid>
-        <ion-row>
-        <ion-col style="text-align: center">
-          <button ion-button icon-only round (click)="createNote()" class="createbutton">
-           <ion-icon name="checkmark-circle" ></ion-icon>
-          </button>
-        </ion-col>
-        </ion-row>
-      </ion-grid>
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col style="text-align: center">
+        <button ion-button icon-only round (click)="createNote()" class="createbutton">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-footer>

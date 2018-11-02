@@ -23,19 +23,14 @@
 <ion-nav #mycontent [root]="rootPage"></ion-nav>
 <ion-content>
 
-  <!-- <ion-list inset>
-        <ion-item *ngFor="let note of notes">
-          <h2>{{note.title}}</h2>
-          <p>{{note.description}}</p>
-        </ion-item>
-      </ion-list> -->
 
-  <ion-searchbar (ionInput)="getNote($event)" placeholder="Search your notes"> </ion-searchbar>
+  <ion-searchbar (ionInput)="getItems($event)" [(ngModel)]="searchText" placeholder="Search your notes" showCancelButton="true" (ionCancel)="isSearchbarOpened=false" > </ion-searchbar>
 
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let note of notes" col-6 no-padding>
-        <ion-card style="background-color: thistle" (click)="viewNote()">
+          <ion-item-group>
+        <ion-card  style="background-color: thistle" (click)="getSingularNote()">
           <ion-card-header>
             {{note.title}}
           </ion-card-header>
@@ -43,6 +38,7 @@
             {{note.description}}
           </ion-card-content>
         </ion-card>
+      </ion-item-group>
       </ion-col>
     </ion-row>
   </ion-grid>

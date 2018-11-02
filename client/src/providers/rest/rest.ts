@@ -54,5 +54,26 @@ export class RestProvider {
         });
     });
   }
+
+  deleteNote(id: number){
+    return new Promise (resolve =>{
+      this.http.delete(this.apiUrl+'note/'+id, httpOptions).subscribe(data=>{
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  getSingularNote(id: number){
+    return new Promise (resolve => {
+      this.http.get(this.apiUrl+'note/'+id, httpOptions).subscribe(data=>{
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+
+  }
 }
 

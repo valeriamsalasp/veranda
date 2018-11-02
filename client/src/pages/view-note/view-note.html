@@ -1,37 +1,36 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-buttons end>
-        <button ion-button class="deletebutton" icon-only (click)="deleteNote()">
-          <ion-icon name="trash"></ion-icon>
-        </button>
-      </ion-buttons>
-    </ion-toolbar> 
-  </ion-header>
+  <ion-toolbar>
+    <ion-buttons end>
+      <button ion-button class="deletebutton" icon-only (click)="deleteNote()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 <ion-content padding>
-    <h2>{{note.title}}</h2>
-    <p>{{note.description}}</p>
-    <ion-list inset>
 
-        <ion-item>
-          <ion-input type="text" placeholder="Title" name="title"></ion-input>
-        </ion-item>
-      
-        <ion-item>
-          <ion-textarea placeholder="Note" name="description"></ion-textarea>
-        </ion-item>
-      
-      </ion-list>
+  <ion-list inset *ngFor="let note of notes">
+
+    <ion-item >
+      <h2>{{note.title}}</h2>
+    </ion-item>
+
+
+    <ion-item>
+        <p>{{note.description}}</p>
+    </ion-item>
+
+  </ion-list>
 </ion-content>
 
-<ion-footer >
-    <ion-grid>
-        <ion-row>
-        <ion-col style="text-align: center">
-          <button ion-button icon-only round (click)="createNote()" class="createbutton">
-           <ion-icon name="checkmark-circle" ></ion-icon>
-          </button>
-        </ion-col>
-        </ion-row>
-      </ion-grid>
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col style="text-align: center">
+        <button ion-button icon-only round (click)="createNote()" class="createbutton">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-footer>
- 
