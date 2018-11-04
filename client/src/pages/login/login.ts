@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { NavController, ViewController } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { HomePage } from '../home/home';
-import { RestProvider } from '../../providers/rest/rest';
-import { StorageProvider } from '../../providers/storage/storage';
+import { GooglePlus } from '@ionic-native/google-plus';
+
 
 
 @Component({
@@ -12,35 +12,26 @@ import { StorageProvider } from '../../providers/storage/storage';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-    username:string;
+    email:string;
     password:string;
 
-    user = {username: '', password:''};
-
-    arr = [];
-    
-    constructor(public navCtrl: NavController, private viewCtrl: ViewController, public restProvider: RestProvider, public storageProvider: StorageProvider) {
+    constructor(public navCtrl: NavController, private viewCtrl: ViewController, private googlePlus: GooglePlus) {
         
     }
 
     login(){
-        console.log(this.user);
-        this.restProvider.login(this.user).then((result) => {
-            for (let key in result){
-                if(result.hasOwnProperty(key)){
-                    this.arr.push(result[key]);
-                }
-            }
-            console.log(this.arr[1]);
-            this.storageProvider.storeData(this.arr[1])
-            this.navCtrl.push(HomePage)
-        }, (err) => {
-            console.log(err);
-        });
+        console.log("Email:" +this.email);
+        console.log("Password:" +this.password);
+        this.navCtrl.push(HomePage);
     }
-    
 
     goRegister(){
         this.navCtrl.push(RegisterPage)
+    }
+
+    loginGoogle(){
+        this.googlePlus.login({})
+        .then(res => console.log(res))
+        .catch(err => console.error(err));
     }
 }
