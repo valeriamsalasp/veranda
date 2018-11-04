@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
+import { CreatePage } from '../../pages/create/create';
 
 @IonicPage()
 @Component({
@@ -10,14 +11,21 @@ import { RestProvider } from '../../providers/rest/rest';
 export class ViewNotePage {
   notes:any;
   note={
-    title:"",
-    description:"",
+    title:'',
+    description:'',
     id: 0
   }
   constructor(public navCtrl: NavController, public navParams: NavParams,  public restProvider: RestProvider) {
     this.note=this.navParams.get('note');
   }
 
+  getNotes() {
+    this.restProvider.getNotes()
+      .then(data => {
+        this.notes = data;
+        console.log(this.notes);
+      });
+  }
 
   deleteNote(){
     this.restProvider.deleteNote(this.note.id)
@@ -28,17 +36,12 @@ export class ViewNotePage {
       });
   }
 
-
-  updateNote(){
-    console.log(this.note);
-    this.restProvider.createNote(this.note).then((result) => {
-        console.log(result);
-    }, (err) => {
-        console.log(err);
-    });
-    this.navCtrl.pop();
-  }
-  goBack(){
-    this.navCtrl.pop()
+  getSingularNote() {
+    this.restProvider.getSingularNote(this.note.id)
+      .then(data => {
+        this.notes = data;
+        console.log(this.notes);
+      });
+      this.navCtrl.push(ViewNotePage);
   }
 }

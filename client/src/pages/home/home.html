@@ -8,33 +8,25 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-menu [content]="mycontent" type="overlay">
   <ion-content>
     <ion-list>
-      <ion-item>
-        <ion-row>
-          <ion-title> user </ion-title>
-          <button ion-button icon-only  round class="createbutton">
-            <ion-icon name="person"></ion-icon>
-          </button>
-        </ion-row>
-      </ion-item>
-      <button ion-button icon-end  round (click)="showConfirm()" class="createbutton">
+      <button ion-button icon-end (click)="showConfirm()">
         Log out
         <ion-icon name="log-out"></ion-icon>
       </button>
       <ion-item menuClose detail-none>Close Menu</ion-item>
     </ion-list>
-
   </ion-content>
 </ion-menu>
 
 <ion-nav #mycontent [root]="rootPage"></ion-nav>
-
 <ion-content>
+
+
   <ion-searchbar (ionInput)="getItems($event)" [(ngModel)]="searchText" placeholder="Search your notes"
-    showCancelButton="true" (ionClear)="onClear(ev)"> </ion-searchbar>
+    showCancelButton="true" (ionCancel)="isSearchbarOpened=false"> </ion-searchbar>
+
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let note of notes" col-6 no-padding>
@@ -51,6 +43,11 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)" ng-if="!noMoreItemsAvailable" on-infinite="loadMore(10)" distance="1%">>
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
+
 </ion-content>
 
 

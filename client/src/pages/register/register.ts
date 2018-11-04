@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Validators } from '@angular/forms'
 import { RestProvider } from '../../providers/rest/rest';
+import { LoginPage } from '../login/login';
 
 
 @Component({
@@ -28,6 +29,7 @@ export class RegisterPage {
         console.log(this.user);
         this.restProvider.addUser(this.user).then((result) => {
             console.log(result);
+            this.navCtrl.push(LoginPage)
         }, (err) => {
             console.log(err);
         });
