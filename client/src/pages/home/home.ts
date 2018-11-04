@@ -12,13 +12,13 @@ import { _appIdRandomProviderFactory } from '@angular/core/src/application_token
 })
 export class HomePage {
   searchText: string;
-  notes: any[] = [];
+  notes: any;
   note = {
-    title: '',
-    description: '',
+    title: "",
+    description: "",
     id: 0
   }
-  public isSearchbarOpened = false;
+
   constructor(public navCtrl: NavController, private viewCtrl: ViewController, public alertCtrl: AlertController, public restProvider: RestProvider) {
     this.initializeItems();
   }
@@ -26,15 +26,12 @@ export class HomePage {
   initializeItems() {
     this.notes;
   }
-
   getItems(ev: any) {
-    // Reset items back to all of the items
+
     this.initializeItems();
 
-    // set val to the value of the searchbar
     const val = ev.target.value;
 
-    // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.notes = this.notes.filter((note) => {
         return (note.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
@@ -42,9 +39,10 @@ export class HomePage {
     }
   }
 
-  onCancel(ev) {
+  onClear(ev) {
     this.initializeItems();
   }
+
   ionViewDidEnter() { this.getNotes() }
 
   getNotes() {
@@ -56,7 +54,7 @@ export class HomePage {
   }
 
   goCreate() {
-    this.navCtrl.push(CreatePage);
+    this.navCtrl.push(CreatePage)
   }
 
   ionViewWillEnter() {
@@ -70,20 +68,19 @@ export class HomePage {
         {
           text: 'No',
           handler: () => {
-            console.log('Disagree clicked');
           }
         },
         {
           text: 'Yes',
           handler: () => {
             this.navCtrl.push(LoginPage);
-            console.log('Agree clicked');
           }
         }
       ]
     });
     confirm.present();
   }
+
   viewNote() {
     this.navCtrl.push(ViewNotePage);
   }
