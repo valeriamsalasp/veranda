@@ -28,8 +28,7 @@ router.register(r'user', views.UserViewSet)
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace = 'rest_framework')),
+    url(r'^api/token/$', TokenObtainPairView.as_view(), name='token_obtain_pair')
     # path('', include('urls')),
     # path('api-auth/', include('rest_framework.urls')),
-    # url(r'^api/token/$', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    # url(r'^api/token/refresh/$', TokenRefreshView.as_view(), name='token_refresh'),
 ]
