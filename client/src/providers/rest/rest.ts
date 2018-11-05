@@ -22,7 +22,7 @@ export class RestProvider {
   apiUrl = 'http://localhost:8100/';
 
   constructor(public http: HttpClient, public storageProvider: StorageProvider) {
-    console.log('Hello RestProvider Provider');
+
   }
 
   //token = this.storageProvider.getData('JWT');
