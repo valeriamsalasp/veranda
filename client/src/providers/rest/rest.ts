@@ -12,7 +12,7 @@ const httpOptions = {
 const tokenHeader = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTQxNjMxMzAzLCJqdGkiOiI5ZTg0NDcwNDYyMjA0NWVmYWJlZjI5ODVhOTNhMWI3NCIsInVzZXJfaWQiOjEyfQ.PgGHjBnuCms-UEkxWL6CxCbT9AtS_T6Dw0aE40I68zs'
+    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTQxNjQyMjkzLCJqdGkiOiJhODdjNTI5NTZjODg0ZGMyYTkzNWNiYmIwNmJkMjQyZSIsInVzZXJfaWQiOjJ9.Fy-jRWkEGF3seDUVPaK6buIRtUeR363BhQlugFsNhgo'
   })
 };
 
@@ -21,7 +21,7 @@ export class RestProvider {
   apiUrl = 'http://localhost:8100/';
 
   constructor(public http: HttpClient, public storageProvider: StorageProvider) {
-    console.log('Hello RestProvider Provider');
+
   }
 
   token = this.storageProvider.getData('JWT');

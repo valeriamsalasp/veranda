@@ -1,4 +1,4 @@
-<ion-content padding class="myview">
+<ion-content padding>
   <br>
   <br>
   <br>
@@ -8,16 +8,16 @@
   <br>
   <ion-list>
     <ion-item>
-      <ion-label floating>Email</ion-label>
+      <ion-label floating>Username</ion-label>
       <ion-input type="text" [(ngModel)]="user.username" name="username"></ion-input>
     </ion-item>
-
     <ion-item>
       <ion-label floating>Password</ion-label>
       <ion-input type="password" [(ngModel)]="user.password" name="password"></ion-input>
     </ion-item>
-
   </ion-list>
-  <button ion-button block round class="loginbutton" (click)="login()" padding>Login</button><br>
+
+  <button ion-button block round class="loginbutton" (click)="login()" padding>Login</button>
   <button ion-button block round clear style="color: #311b92" (click)="goRegister()" padding>Create Account</button>
+
 </ion-content>

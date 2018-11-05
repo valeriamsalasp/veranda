@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, ViewController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
-import { HomePage } from '../home/home';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { PhotoLibrary } from '@ionic-native/photo-library';
+import { ModalController } from 'ionic-angular';
+import { CanvasPage } from '../canvas/canvas';
 
 @Component({
   selector: 'page-create',
@@ -13,17 +14,9 @@ export class CreatePage {
   title: string;
   notes: any;
   photo: any;
-  availableColors: any;
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public restProvider: RestProvider, private photoLibrary: PhotoLibrary, private viewCtrl: ViewController, private camera: Camera) {
-   
-    this.availableColors = [
-      '#91A8D0',
-      '#f7cac9',
-      '#9896a4',
-      '#79c753',
-      '#d8bfd8'
-    ];
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public modalCtrl: ModalController, public restProvider: RestProvider, private photoLibrary: PhotoLibrary, private viewCtrl: ViewController, private camera: Camera) {
+
   }
 
   note = { title: "", description: "", user_id: 2 };
@@ -93,5 +86,9 @@ export class CreatePage {
       //handle error
       console.log(error);
     });
+  }
+
+  canvas(){
+    this.navCtrl.push(CanvasPage)
   }
 }
