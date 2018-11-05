@@ -11,20 +11,26 @@
 
 <ion-menu [content]="mycontent" type="overlay">
   <ion-content no-bounce>
-
     <ion-list>
       <ion-item>
-        <ion-row>
-          <ion-title> user </ion-title>
-          <button ion-button icon-only  round class="createbutton">
-            <ion-icon name="person"></ion-icon>
-          </button>
-        </ion-row>
+        <ion-card>
+
+          <ion-item>
+            <ion-icon item-start name="person"></ion-icon>
+            <h2>Tomas Amado</h2>
+            <p>tomasamado@gmail.com</p>
+          </ion-item>
+
+          <ion-card-content>
+            <p>Username</p>
+          </ion-card-content>
+        </ion-card>
       </ion-item>
-      <button ion-button icon-end  round (click)="showConfirm()" class="createbutton">
-        Log out
-        <ion-icon name="log-out"></ion-icon>
-      </button>
+      <ion-item><button ion-button icon-end round (click)="showConfirm()" class="createbutton">
+          Log out
+          <ion-icon name="log-out"></ion-icon>
+        </button>
+      </ion-item>
       <ion-item menuClose detail-none>Close Menu</ion-item>
     </ion-list>
 
@@ -56,13 +62,8 @@
 
 
 <ion-footer>
-  <ion-grid>
-    <ion-row>
-      <ion-col style="text-align: center">
-        <button ion-button icon-only round (click)="goCreate()" class="createbutton">
-          <ion-icon name="create"></ion-icon>
-        </button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+
+  <button ion-button icon-only round (click)="goCreate()" class="addbutton">
+    <ion-icon name="create"></ion-icon>
+  </button>
 </ion-footer>

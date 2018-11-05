@@ -1,7 +1,8 @@
 <ion-toolbar id="top-toolbar">
     <ion-buttons left>
+        <button icon-only ion-button (click)="goBack()"><ion-icon name="arrow-round-back"></ion-icon></button>
         <button *ngFor="let colour of availableColours" icon-only ion-button (click)="changeColour(colour)">
-            <ion-icon [style.color]="colour" name="brush"></ion-icon>
+            <ion-icon [style.color]="colour" name="water"></ion-icon>
         </button>
     </ion-buttons>
     <ion-buttons right>
