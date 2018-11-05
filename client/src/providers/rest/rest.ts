@@ -90,6 +90,16 @@ export class RestProvider {
     });
   }
 
+  updateNote(data) {
+    return new Promise(resolve => {
+      this.http.put(this.apiUrl + 'note/' + data.id, tokenHeader).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
   getSingularNote(note) {
     console.log(note);
   }

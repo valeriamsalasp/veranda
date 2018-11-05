@@ -8,23 +8,20 @@ import { RestProvider } from '../../providers/rest/rest';
   templateUrl: 'view-note.html',
 })
 export class ViewNotePage {
-  value:any;
-  
+  note:any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,  public restProvider: RestProvider) {
-    this.value= navParams.get('note');
+    this.note= navParams.get('note');
   }
 
   ionViewDidLoad(){
-    console.log(this.value);
+    console.log(this.note.id);
+  }
+  
+  deleteNote(){
+    this.restProvider.deleteNote(this.note.id)
   }
 }
-//   deleteNote(){
-//     this.restProvider.deleteNote(this.note.id)
-//       // .then(data=>{
-//       //   this.notes = data;
-//       //   console.log(this.notes);
-//   }
-
 
 //   updateNote(){
 //     console.log(this.note);
