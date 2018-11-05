@@ -16,9 +16,8 @@ export class LoginPage {
     password:string;
 
     user = {username: '', password:''};
-
     arr = [];
-    
+
     constructor(public navCtrl: NavController, private viewCtrl: ViewController, public restProvider: RestProvider, public storageProvider: StorageProvider) {
         
     }
@@ -26,13 +25,8 @@ export class LoginPage {
     login(){
         console.log(this.user);
         this.restProvider.login(this.user).then((result) => {
-            for (let key in result){
-                if(result.hasOwnProperty(key)){
-                    this.arr.push(result[key]);
-                }
-            }
-            console.log(this.arr[1]);
-            this.storageProvider.storeData(this.arr[1])
+            this.arr = this.storageProvider.getToken(result);
+            this.storageProvider.storeData(this.arr);
             this.navCtrl.push(HomePage)
         }, (err) => {
             console.log(err);
@@ -42,11 +36,5 @@ export class LoginPage {
 
     goRegister(){
         this.navCtrl.push(RegisterPage)
-    }
-
-    loginGoogle(){
-        this.googlePlus.login({})
-        .then(res => console.log(res))
-        .catch(err => console.error(err));
     }
 }

@@ -85,7 +85,6 @@
     <plugin name="cordova-sqlite-storage" spec="2.5.1" />
     <plugin name="cordova-plugin-nativestorage" spec="2.3.2" />
     <engine name="android" spec="^7.1.1" />
-    <plugin name="cordova-plugin-camera" spec="4.0.3" />
     <plugin name="cordova-plugin-photo-library" spec="2.1.1">
         <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="To choose photos" />
     </plugin>
@@ -93,4 +92,5 @@
         <variable name="REVERSED_CLIENT_ID" value="myreversedclientid" />
     </plugin>
     <engine name="android" spec="^7.1.1" />
+    <plugin name="cordova-plugin-camera" spec="4.0.3" />
 </widget>
