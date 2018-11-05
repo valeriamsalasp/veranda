@@ -14,7 +14,7 @@ title:string;
  
   }
 
-  note = {title:"", description:"", user_id:2};
+  note = {title:"", description:"", user_id:12};
   showRadio() {
     let alert = this.alertCtrl.create();
     alert.setTitle('Choose note color');

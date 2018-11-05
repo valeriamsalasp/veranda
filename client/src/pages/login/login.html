@@ -1,23 +1,23 @@
 <ion-content padding class="myview">
-<br>
-<br>
-<br>
-<br>
-<img src="./assets/imgs/logo.jpg" style="width:125px; height:100px" class="center">
-<br>
-<br>
-    <ion-list>
-        <ion-item>
-          <ion-label floating>Email</ion-label>
-          <ion-input type="text" [(ngModel)]="email" name="email"></ion-input>
-        </ion-item>
-      
-        <ion-item>
-          <ion-label floating>Password</ion-label>
-          <ion-input type="password" [(ngModel)]="password" name="email"></ion-input>
-        </ion-item>
-      
-      </ion-list>
-      <button ion-button block round class="loginbutton" (click)="login()" padding>Login</button><br>
-      <button ion-button block round clear style="color: #311b92" (click)="goRegister()" padding>Create Account</button>
+  <br>
+  <br>
+  <br>
+  <br>
+  <img src="./assets/imgs/logo.jpg" style="width:125px; height:100px" class="center">
+  <br>
+  <br>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="text" [(ngModel)]="user.username" name="username"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="user.password" name="password"></ion-input>
+    </ion-item>
+
+  </ion-list>
+  <button ion-button block round class="loginbutton" (click)="login()" padding>Login</button><br>
+  <button ion-button block round clear style="color: #311b92" (click)="goRegister()" padding>Create Account</button>
 </ion-content>

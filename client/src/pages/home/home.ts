@@ -12,7 +12,7 @@ import { _appIdRandomProviderFactory } from '@angular/core/src/application_token
 })
 export class HomePage {
   searchText: string;
-  notes: any[] = [];
+  notes: any[];
   note = {
     title: '',
     description: '',
@@ -42,10 +42,13 @@ export class HomePage {
     }
   }
 
-  onCancel(ev) {
+  onCancel() {
     this.initializeItems();
   }
-  ionViewDidEnter() { this.getNotes() }
+
+  ionViewDidEnter() {
+    this.getNotes()
+  }
 
   getNotes() {
     this.restProvider.getNotes()
