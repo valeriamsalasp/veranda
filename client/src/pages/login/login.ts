@@ -10,7 +10,7 @@ import { StorageProvider } from '../../providers/storage/storage';
     selector: 'page-login',
     templateUrl: 'login.html'
 })
-
+export class LoginPage {
     user = {username: '', password:''};
     arr = [];
 
@@ -20,8 +20,13 @@ import { StorageProvider } from '../../providers/storage/storage';
     login() {
         console.log(this.user);
         this.restProvider.login(this.user).then((result) => {
-            this.arr = this.storageProvider.getToken(result);
-            this.storageProvider.storeData(this.arr);
+            for (let key in result){
+                if(result.hasOwnProperty(key)){
+                    this.arr.push(result[key]);
+                }
+            }
+            console.log(this.arr[1]);
+            this.storageProvider.storeData(this.arr[1])
             this.navCtrl.push(HomePage)
         }, (err) => {
             console.log(err);
