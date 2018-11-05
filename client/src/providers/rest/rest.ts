@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { StorageProvider } from '../storage/storage';
+import { LoginPage } from '../../pages/login/login';
 
 
 const httpOptions = {
@@ -12,7 +13,7 @@ const httpOptions = {
 const tokenHeader = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTQxNjMxMzAzLCJqdGkiOiI5ZTg0NDcwNDYyMjA0NWVmYWJlZjI5ODVhOTNhMWI3NCIsInVzZXJfaWQiOjEyfQ.PgGHjBnuCms-UEkxWL6CxCbT9AtS_T6Dw0aE40I68zs'
+    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTQxNjQwMTQ5LCJqdGkiOiI2YmU1N2YzZDdhODE0ZWZlYWE3Y2M2NTczNTcyN2I0OCIsInVzZXJfaWQiOjEyfQ.EYuvvn4bMgb7703JyrbwyY1Kgc_DYbOtlrd2MmJSW0A'
   })
 };
 
@@ -24,7 +25,7 @@ export class RestProvider {
     console.log('Hello RestProvider Provider');
   }
 
-  token = this.storageProvider.getData('JWT');
+  //token = this.storageProvider.getData('JWT');
 
   login(data) {
     return new Promise((resolve, reject) => {
@@ -79,7 +80,7 @@ export class RestProvider {
     });
   }
 
-  deleteNote(id: number) {
+  deleteNote(id) {
     return new Promise(resolve => {
       this.http.delete(this.apiUrl + 'note/' + id, tokenHeader).subscribe(data => {
         resolve(data);
@@ -89,15 +90,18 @@ export class RestProvider {
     });
   }
 
-  getSingularNote(id: number) {
+  updateNote(data) {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + 'note/' + id, tokenHeader).subscribe(data => {
+      this.http.put(this.apiUrl + 'note/' + data.id, tokenHeader).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
       });
     });
+  }
 
+  getSingularNote(note) {
+    console.log(note);
   }
 }
 

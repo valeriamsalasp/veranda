@@ -26,6 +26,7 @@ export class HomePage {
   initializeItems() {
     this.notes;
   }
+
   getItems(ev: any) {
 
     this.initializeItems();
@@ -95,13 +96,14 @@ export class HomePage {
   //    });
   // }
 
-  getSingularNote() {
-    this.restProvider.getSingularNote(this.note.id)
-      .then(data => {
-        this.notes = data;
-        console.log(this.notes);
-      });
-    this.navCtrl.push(ViewNotePage);
+  getSingularNote(note) {
+    this.navCtrl.push(ViewNotePage, {note:note});
+    // this.restProvider.getSingularNote(this.note.id)
+    //   .then(data => {
+    //     this.notes = data;
+    //     console.log(this.notes);
+    //   });
+    // this.navCtrl.push(ViewNotePage);
   }
 }
 

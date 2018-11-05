@@ -23,4 +23,13 @@ export class StorageProvider {
                 error => console.error('Error retreiving data', error)
             );
     }
+    getToken(token){
+        for (let key in token){
+            if(token.hasOwnProperty(key)){
+                var arr = [];
+                arr.push(token[key]);
+                return arr;
+            }
+        }
+    }
 }

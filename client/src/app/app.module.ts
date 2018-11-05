@@ -47,7 +47,7 @@ import { StorageProvider } from '../providers/storage/storage';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider,
-    StorageProvider
+    StorageProvider,
     RestProvider,
     Camera,
     PhotoLibrary,
