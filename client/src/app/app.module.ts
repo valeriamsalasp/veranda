@@ -3,6 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { Camera } from '@ionic-native/camera';
+import { PhotoLibrary } from '@ionic-native/photo-library';
+import { GooglePlus } from '@ionic-native/google-plus';
+
 import { HomePage } from '../pages/home/home';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -44,6 +48,10 @@ import { StorageProvider } from '../providers/storage/storage';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider,
     StorageProvider
+    RestProvider,
+    Camera,
+    PhotoLibrary,
+    GooglePlus
   ]
 })
 export class AppModule {}

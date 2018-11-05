@@ -43,4 +43,10 @@ export class LoginPage {
     goRegister(){
         this.navCtrl.push(RegisterPage)
     }
+
+    loginGoogle(){
+        this.googlePlus.login({})
+        .then(res => console.log(res))
+        .catch(err => console.error(err));
+    }
 }

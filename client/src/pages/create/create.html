@@ -1,14 +1,9 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-navbar>
     <ion-title>
       New note
     </ion-title>
-    <ion-buttons end>
-      <button ion-button class="colorbutton" icon-only (click)="showRadio()">
-        <ion-icon name="color-palette"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
+  </ion-navbar>
 </ion-header>
 
 <ion-content padding>
@@ -22,6 +17,10 @@
       <ion-textarea placeholder="Note" [(ngModel)]="note.description" name="description"></ion-textarea>
     </ion-item>
 
+    <ion-item>
+      <p style="text-align: center"><img src="{{ photo }}"></p>
+    </ion-item>
+
   </ion-list>
 </ion-content>
 
@@ -29,6 +28,7 @@
   <ion-grid>
     <ion-row>
       <ion-col style="text-align: center">
+
         <button ion-button icon-only round (click)="createNote()" class="createbutton">
           <ion-icon name="checkmark-circle"></ion-icon>
         </button>
@@ -36,3 +36,20 @@
     </ion-row>
   </ion-grid>
 </ion-footer>
+
+<ion-fab right bottom>
+  <button ion-fab mini class="createbutton">
+    <ion-icon name="add"></ion-icon>
+  </button>
+  <ion-fab-list side="top">
+    <button ion-button round class="createbutton" icon-only (click)="showRadio()">
+      <ion-icon name="color-palette"></ion-icon>
+    </button>
+    <button ion-button icon-only round (click)="addPhoto()" class="createbutton">
+      <ion-icon name="photos"></ion-icon>
+    </button>
+    <button ion-button icon-only round (click)="takePhoto()" class="createbutton">
+      <ion-icon name="camera"></ion-icon>
+    </button>
+  </ion-fab-list>
+</ion-fab>
