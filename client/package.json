@@ -24,7 +24,7 @@
     "@ionic-native/camera": "^4.17.0",
     "@ionic-native/core": "~4.15.0",
     "@ionic-native/google-plus": "^4.17.0",
-    "@ionic-native/native-storage": "^4.17.0",
+    "@ionic-native/native-storage": "^4.16.0",
     "@ionic-native/photo-library": "^4.17.0",
     "@ionic-native/splash-screen": "~4.15.0",
     "@ionic-native/status-bar": "~4.15.0",

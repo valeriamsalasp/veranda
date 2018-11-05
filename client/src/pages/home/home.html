@@ -46,7 +46,7 @@
     <ion-row>
       <ion-col *ngFor="let note of notes" col-6 no-padding>
         <ion-item-group>
-          <ion-card style="background-color: thistle" (click)="getSingularNote()">
+          <ion-card style="background-color: thistle" (click)="getSingularNote(note)">
             <ion-card-header>
               {{note.title}}
             </ion-card-header>
