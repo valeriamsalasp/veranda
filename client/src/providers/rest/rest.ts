@@ -10,10 +10,13 @@ const httpOptions = {
   })
 };
 
+var storageProvider: StorageProvider;
+//var token = storageProvider.getData();
+
 const tokenHeader = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTQxNzMxODI0LCJqdGkiOiJjN2QwMDc1ZmM5MGE0NTg5YmNlOTRlNTJiYWNjOWVmNiIsInVzZXJfaWQiOjJ9.0mVpcrijhhDCt1B77vIs9ydqLFOoE6uu8ddE9VpRrDA'
+    'Authorization': 'Bearer ' 
   })
 };
 
@@ -24,8 +27,6 @@ export class RestProvider {
   constructor(public http: HttpClient, public storageProvider: StorageProvider) {
 
   }
-
-  //token = this.storageProvider.getData('JWT');
 
   login(data) {
     return new Promise((resolve, reject) => {
@@ -41,6 +42,16 @@ export class RestProvider {
   getUsers() {
     return new Promise(resolve => {
       this.http.get(this.apiUrl + 'user').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  getSingularUser(userId) {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl + 'user/'+userId).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);

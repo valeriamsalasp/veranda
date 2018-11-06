@@ -15,19 +15,26 @@ export class CreatePage {
   notes: any;
   photo: any;
   userId: number;
+  currentColour: string = '#ffffff';
+  availableColours: any;
+
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams, public modalCtrl: ModalController, public restProvider: RestProvider, private photoLibrary: PhotoLibrary, private viewCtrl: ViewController, private camera: Camera) {
     this.userId= navParams.get('userId');
+    this.availableColours = [
+      '#b4ecb4',
+      '#99dbef',
+      '#f7cac9',
+      '#a8a8a8',
+      '#91A8d0',
+      '#FFFFFF'
+    ];
   }
   changeColour(colour) {
     this.currentColour = colour;
   }
 
   note = { title: "", description: "", user_id:0};
-  showRadio() {
-    let alert = this.alertCtrl.create();
-    alert.setTitle('Choose note color');
-
 
   createNote() {
     this.note.user_id = this.userId;

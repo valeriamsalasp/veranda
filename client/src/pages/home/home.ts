@@ -20,11 +20,13 @@ export class HomePage {
     description: "",
     id: 0
   }
+  user={};
   userId = 0;
 
   constructor(public navCtrl: NavController, private viewCtrl: ViewController, public alertCtrl: AlertController, public restProvider: RestProvider, public navParams: NavParams) {
     this.initializeItems();
     this.userId= navParams.get('userId');
+    this.getSingularUser();
   }
 
   initializeItems() {
@@ -57,6 +59,14 @@ export class HomePage {
       .then(data => {
         this.notes = data;
         console.log(this.notes);
+      });
+  }
+
+  getSingularUser() {
+    this.restProvider.getSingularUser(this.userId)
+      .then(data => {
+        this.user = data;
+        console.log(this.user);
       });
   }
 

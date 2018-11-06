@@ -27,7 +27,7 @@ export class LoginPage {
                     this.arr.push(result[key]);
                 }
             }
-            console.log(this.arr[1]);
+            // console.log(this.arr[1]);
             var decoded = this.jwtHelper.decodeToken(this.arr[1]);
             this.userId = decoded.user_id;
             this.storageProvider.storeData(this.arr[1])
