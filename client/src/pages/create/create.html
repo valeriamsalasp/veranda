@@ -37,26 +37,26 @@
     <ion-row>
       <ion-col style="text-align: center">
 
-        <button ion-button icon-only round (click)="createNote()" class="createbutton">
-          <ion-icon name="checkmark-circle"></ion-icon>
-        </button>
+          <button ion-button icon-only clear (click)="goCreate()" class="createbutton">
+              <ion-icon  name="create"></ion-icon>
+            </button>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-footer>
 
 <ion-fab right bottom>
-  <button ion-fab mini class="createbutton">
+  <button ion-fab mini class="crbutton">
     <ion-icon name="add"></ion-icon>
   </button>
   <ion-fab-list side="top">
-    <button ion-button icon-only round (click)="addPhoto()" class="createbutton">
+    <button ion-button icon-only clear (click)="addPhoto()" class="createbutton">
       <ion-icon name="photos"></ion-icon>
     </button>
-    <button ion-button icon-only round (click)="takePhoto()" class="createbutton">
+    <button ion-button icon-only clear (click)="takePhoto()" class="createbutton">
       <ion-icon name="camera"></ion-icon>
     </button>
-    <button ion-button icon-only round (click)="canvas()" class="createbutton">
+    <button ion-button icon-only clear (click)="canvas()" class="createbutton">
       <ion-icon name="color-wand"></ion-icon>
     </button>
   </ion-fab-list>

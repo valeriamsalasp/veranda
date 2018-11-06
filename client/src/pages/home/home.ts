@@ -21,10 +21,13 @@ export class HomePage {
     id: 0
   }
   userId = 0;
+  user={};
+  
 
   constructor(public navCtrl: NavController, private viewCtrl: ViewController, public alertCtrl: AlertController, public restProvider: RestProvider, public navParams: NavParams) {
     this.initializeItems();
     this.userId= navParams.get('userId');
+    this.getSingularUser();
   }
 
   initializeItems() {
@@ -98,6 +101,14 @@ export class HomePage {
     //     console.log(this.notes);
     //   });
     // this.navCtrl.push(ViewNotePage);
+  }
+
+  getSingularUser() {
+    this.restProvider.getSingularUser(this.userId)
+      .then(data => {
+        this.user = data;
+        console.log(this.user);
+      });
   }
 }
 

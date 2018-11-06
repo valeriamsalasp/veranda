@@ -16,11 +16,11 @@
         <ion-card>
           <ion-item>
             <ion-icon item-start name="person"></ion-icon>
-            <h2>Tomas Amado</h2>
-            <p style="text-overflow:ellipsis;">tomasamado@gmail.com</p>
+            <h2>{{user.first_name}} {{user.last_name}}</h2>
+            <p style="text-overflow:ellipsis;">{{user.email}}</p>
           </ion-item>
           <ion-card-content>
-            <p>Username</p>
+            <p>{{user.username}}</p>
           </ion-card-content>
         </ion-card>
       </ion-item>
@@ -59,7 +59,7 @@
 
 
 <ion-footer>
-  <button ion-button icon-only round (click)="goCreate()" class="addbutton">
-    <ion-icon name="create"></ion-icon>
+  <button ion-button icon-only clear (click)="goCreate()" class="addbutton">
+    <ion-icon  name="create"></ion-icon>
   </button>
 </ion-footer>

@@ -13,13 +13,13 @@ const httpOptions = {
 const tokenHeader = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTQxNzMxODI0LCJqdGkiOiJjN2QwMDc1ZmM5MGE0NTg5YmNlOTRlNTJiYWNjOWVmNiIsInVzZXJfaWQiOjJ9.0mVpcrijhhDCt1B77vIs9ydqLFOoE6uu8ddE9VpRrDA'
+    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTQxNzM1MTE2LCJqdGkiOiJiNjE3MGIxMjY2NjU0ZGIyYWViY2VhZmY3YzJiZGVkYyIsInVzZXJfaWQiOjV9.UBcED7jjjz8gW95cqJiKJWlYVve_rWdBX7uHIZ8esqs'
   })
 };
 
 @Injectable()
 export class RestProvider {
-  apiUrl = 'http://192.168.1.7:8100/';
+  apiUrl = 'http://localhost:8100/';
 
   constructor(public http: HttpClient, public storageProvider: StorageProvider) {
 
@@ -48,6 +48,16 @@ export class RestProvider {
     });
   }
 
+  getSingularUser(userId) {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl + 'user/'+userId).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+  
   addUser(data) {
     return new Promise((resolve, reject) => {
       this.http.post(this.apiUrl + 'user/', JSON.stringify(data), httpOptions)
