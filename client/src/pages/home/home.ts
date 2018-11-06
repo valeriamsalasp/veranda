@@ -18,20 +18,29 @@ export class HomePage {
   note = {
     title: "",
     description: "",
-    id: 0
+    id: 0,
   }
   userId = 0;
   user={};
-  
+  items:any;
+  public isSearchbarOpened = false;
 
   constructor(public navCtrl: NavController, private viewCtrl: ViewController, public alertCtrl: AlertController, public restProvider: RestProvider, public navParams: NavParams) {
     this.initializeItems();
     this.userId= navParams.get('userId');
     this.getSingularUser();
+    this.availableColours = [
+      '#b4ecb4',
+      '#99dbef',
+      '#f7cac9',
+      '#a8a8a8',
+      '#91A8d0',
+      '#FFFFFF'
+    ];
   }
 
   initializeItems() {
-    this.notes;
+    this.items=this.notes;
   }
 
   getItems(ev: any) {
@@ -67,6 +76,9 @@ export class HomePage {
     this.navCtrl.push(CreatePage, {userId:this.userId})
   }
 
+  changeColour(colour) {
+    this.currentColour = colour;
+  }
 
   showConfirm() {
     const confirm = this.alertCtrl.create({

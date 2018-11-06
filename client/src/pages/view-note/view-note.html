@@ -1,17 +1,23 @@
 <ion-header>
   <ion-navbar>
+      <ion-buttons end>
+          <button ion-button icon-only clear (click)="deleteNote()" class="createbutton">
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-list inset>
 
-    <ion-item>
-      <ion-input value="{{note.title}}"> </ion-input>
-    </ion-item>
+
+      <ion-item>
+          <ion-textarea placeholder="Title" [(ngModel)]="note.title" name="title" style="text-align: center"> {{note.title}}</ion-textarea>
+      </ion-item>
 
     <ion-item>
-        <ion-textarea placeholder="Note" [(ngModel)]="note.description" name="description"> {{note.description}}</ion-textarea>
+        <ion-textarea placeholder="Note" rows=12 [(ngModel)]="note.description" name="description"> {{note.description}}</ion-textarea>
     </ion-item>
 
   </ion-list>
@@ -23,12 +29,6 @@
         <button ion-button icon-only clear large (click)="updateNote()" class="createbutton" style="text-align: center">
           <ion-icon name="checkmark-circle"></ion-icon>
         </button>
-
-      <ion-buttons end>
-        <button ion-button icon-only clear (click)="deleteNote()" class="createbutton">
-          <ion-icon name="trash"></ion-icon>
-        </button>
-      </ion-buttons>
 
     </ion-row>
   </ion-grid>

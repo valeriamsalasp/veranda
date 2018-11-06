@@ -1,9 +1,9 @@
-<ion-header style="text-align: center">
-  <ion-toolbar style="text-align: center">
+<ion-header>
+  <ion-toolbar>
     <button ion-button icon-only menuToggle left>
       <ion-icon class="menubutton" name="menu"></ion-icon>
     </button>
-    <ion-title text-center>
+    <ion-title style="text-align: center">
       Notes
     </ion-title>
   </ion-toolbar>
@@ -24,7 +24,7 @@
           </ion-card-content>
         </ion-card>
       </ion-item>
-      <ion-item><button ion-button icon-end (click)="showConfirm()" class="createbutton">
+      <ion-item><button ion-button icon-end  (click)="showConfirm()" class="createbutton">
           Log out
           <ion-icon name="log-out"></ion-icon>
         </button>
@@ -38,7 +38,7 @@
 
 <ion-content>
   <ion-searchbar (ionInput)="getItems($event)" [(ngModel)]="searchText" placeholder="Search your notes"
-    showCancelButton="true" (ionClear)="onCancel(ev)"> </ion-searchbar>
+    showCancelButton="true" (ionClear)="onCancel(ev)" (ionCancel)="isSearchbarOpened=false"> </ion-searchbar>
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let note of notes" col-6 no-padding>
