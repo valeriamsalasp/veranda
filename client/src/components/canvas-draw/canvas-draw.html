@@ -5,7 +5,7 @@
             <ion-icon [style.color]="colour" name="water"></ion-icon>
         </button>
     </ion-buttons>
-    <ion-buttons right>
+    <ion-buttons>
         <button style="border: 1px solid #cecece;" ion-button icon-only style.color="#fff" (click)="changeColour('#fff')">
             <ion-icon style="color: #fff;" name="square"></ion-icon>
         </button>
@@ -17,8 +17,9 @@
 <ion-toolbar id="bottom-toolbar">
     <ion-buttons left>
         <button color="dark" ion-button icon-only (click)="clearCanvas()"><ion-icon name="trash"></ion-icon></button>
+        <button color="dark" ion-button icon-only (click)="saveDrawing()"><ion-icon name="checkmark-circle"></ion-icon></button>
     </ion-buttons>
-    <ion-buttons right>
+    <ion-buttons>
         <button color="dark" ion-button icon-only (click)="changeSize(5)"><ion-icon style="font-size: 0.25em;" name="radio-button-on"></ion-icon></button>
         <button color="dark" ion-button icon-only (click)="changeSize(10)"><ion-icon style="font-size: 0.5em;" name="radio-button-on"></ion-icon></button>
         <button color="dark" ion-button icon-only (click)="changeSize(20)"><ion-icon style="font-size: 0.75em;" name="radio-button-on"></ion-icon></button>

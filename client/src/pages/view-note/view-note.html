@@ -7,7 +7,7 @@
   <ion-list inset>
 
     <ion-item>
-      <ion-title>{{note.title}}</ion-title>
+      <ion-input value="{{note.title}}"> </ion-input>
     </ion-item>
 
     <ion-item>
@@ -20,16 +20,16 @@
 <ion-footer>
   <ion-grid>
     <ion-row>
-      <ion-col style="text-align: center">
-        <button ion-button icon-only round (click)="updateNote()" class="createbutton">
+        <button ion-button icon-only clear large (click)="updateNote()" class="createbutton" style="text-align: center">
           <ion-icon name="checkmark-circle"></ion-icon>
         </button>
-      </ion-col>
-      <ion-buttons right>
-        <button ion-button icon-only round (click)="deleteNote()" class="createbutton">
+
+      <ion-buttons end>
+        <button ion-button icon-only clear (click)="deleteNote()" class="createbutton">
           <ion-icon name="trash"></ion-icon>
         </button>
       </ion-buttons>
+
     </ion-row>
   </ion-grid>
 </ion-footer>

@@ -1,6 +1,7 @@
 import { Component, ViewChild, Renderer } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { NavController, ViewController } from 'ionic-angular';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 @Component({
   selector: 'canvas-draw',
@@ -19,7 +20,7 @@ export class CanvasDrawComponent {
 
   brushSize: number = 10;
 
-  constructor(public platform: Platform, public renderer: Renderer, public navCtrl: NavController, private viewCtrl: ViewController) {
+  constructor(public platform: Platform, public renderer: Renderer, public navCtrl: NavController, private viewCtrl: ViewController, private nativeStorage: NativeStorage) {
     this.availableColours = [
       '#1abc9c',
       '#3498db',
@@ -78,5 +79,16 @@ export class CanvasDrawComponent {
   }
   goBack(){
     this.navCtrl.pop()
+  }
+
+  saveDrawing(){
+    var dataUrl = this.canvasElement.toDataURL();
+ 
+    let ctx = this.canvasElement.getContext('2d');
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+  
+    let name = new Date().getTime() + '.png';
+    
+    this.nativeStorage.setItem(name,dataUrl)
   }
 }

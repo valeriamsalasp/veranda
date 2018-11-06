@@ -1,4 +1,4 @@
-<ion-content padding>
+<ion-content padding class="background">
   <br>
   <br>
   <br>
@@ -9,15 +9,15 @@
   <ion-list>
     <ion-item>
       <ion-label floating>Username</ion-label>
-      <ion-input type="text" [(ngModel)]="user.username" name="username"></ion-input>
+      <ion-input type="text" [(ngModel)]="user.username" name="username" class="input"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Password</ion-label>
-      <ion-input type="password" [(ngModel)]="user.password" name="password"></ion-input>
+      <ion-input type="password" [(ngModel)]="user.password" name="password" class="input"></ion-input>
     </ion-item>
   </ion-list>
 
   <button ion-button block class="loginbutton" (click)="login()" padding>Login</button>
-  <button ion-button block clear style="color: #91A8D0" (click)="goRegister()" padding>Create Account</button>
+  <button ion-button block clear style="color: #7273cc" (click)="goRegister()" padding>Create Account</button>
 
 </ion-content>

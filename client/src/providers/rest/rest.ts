@@ -13,7 +13,7 @@ const httpOptions = {
 const tokenHeader = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTQxNzM1MTE2LCJqdGkiOiJiNjE3MGIxMjY2NjU0ZGIyYWViY2VhZmY3YzJiZGVkYyIsInVzZXJfaWQiOjV9.UBcED7jjjz8gW95cqJiKJWlYVve_rWdBX7uHIZ8esqs'
+    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTQxNzc4ODEzLCJqdGkiOiI0YzRjNGM1MGQyYWU0OTUwOWRkMzFjNmVhNGIzZmM5YSIsInVzZXJfaWQiOjV9.HfIdZfqCl9Xze2OWKyREJbxmcSrewpUG4k4HZVAYWrA'
   })
 };
 
