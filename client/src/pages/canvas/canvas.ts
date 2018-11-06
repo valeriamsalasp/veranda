@@ -11,8 +11,4 @@ export class CanvasPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CanvasPage');
-  }
-
 }

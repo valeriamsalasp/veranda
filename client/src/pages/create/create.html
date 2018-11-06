@@ -6,18 +6,26 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding padding [style.background-color]="this.currentColour">
   <ion-list inset>
+      <ion-buttons>
+          <button *ngFor="let colour of availableColours" color="light" icon-only ion-button outline (click)="changeColour(colour)">
+              <ion-icon  [style.color]="colour" name="water"></ion-icon>
+          </button>
+      </ion-buttons>
+  </ion-list>
+  <br>
 
-    <ion-item>
+  <ion-list inset >
+    <ion-item [style.background-color]="this.currentColour">
       <ion-input type="text" placeholder="Title" [(ngModel)]="note.title" name="title"></ion-input>
     </ion-item>
 
-    <ion-item>
+    <ion-item [style.background-color]="this.currentColour">
       <ion-textarea placeholder="Note" [(ngModel)]="note.description" name="description"></ion-textarea>
     </ion-item>
 
-    <ion-item>
+    <ion-item [style.background-color]="this.currentColour">
       <p style="text-align: center"><img src="{{ photo }}"></p>
     </ion-item>
 
@@ -42,9 +50,6 @@
     <ion-icon name="add"></ion-icon>
   </button>
   <ion-fab-list side="top">
-    <button ion-button round class="createbutton" icon-only (click)="showRadio()">
-      <ion-icon name="color-palette"></ion-icon>
-    </button>
     <button ion-button icon-only round (click)="addPhoto()" class="createbutton">
       <ion-icon name="photos"></ion-icon>
     </button>
@@ -52,7 +57,7 @@
       <ion-icon name="camera"></ion-icon>
     </button>
     <button ion-button icon-only round (click)="canvas()" class="createbutton">
-        <ion-icon name="color-wand"></ion-icon>
+      <ion-icon name="color-wand"></ion-icon>
     </button>
   </ion-fab-list>
 </ion-fab>

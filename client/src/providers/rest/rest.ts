@@ -13,7 +13,7 @@ const httpOptions = {
 const tokenHeader = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTQxNjQwMTQ5LCJqdGkiOiI2YmU1N2YzZDdhODE0ZWZlYWE3Y2M2NTczNTcyN2I0OCIsInVzZXJfaWQiOjEyfQ.EYuvvn4bMgb7703JyrbwyY1Kgc_DYbOtlrd2MmJSW0A'
+    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTQxNzMxODI0LCJqdGkiOiJjN2QwMDc1ZmM5MGE0NTg5YmNlOTRlNTJiYWNjOWVmNiIsInVzZXJfaWQiOjJ9.0mVpcrijhhDCt1B77vIs9ydqLFOoE6uu8ddE9VpRrDA'
   })
 };
 
@@ -82,7 +82,7 @@ export class RestProvider {
 
   deleteNote(id) {
     return new Promise(resolve => {
-      this.http.delete(this.apiUrl + 'note/' + id, tokenHeader).subscribe(data => {
+      this.http.delete(this.apiUrl + 'note/' + id + '/', tokenHeader).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -91,8 +91,9 @@ export class RestProvider {
   }
 
   updateNote(data) {
-    return new Promise(resolve => {
-      this.http.put(this.apiUrl + 'note/' + data.id, tokenHeader).subscribe(data => {
+    var updateUrl = this.apiUrl + 'note/' + data.id + '/'
+    return new Promise(resolve => { 
+      this.http.put(updateUrl, data, tokenHeader).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);

@@ -19,29 +19,15 @@ export class CreatePage {
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams, public modalCtrl: ModalController, public restProvider: RestProvider, private photoLibrary: PhotoLibrary, private viewCtrl: ViewController, private camera: Camera) {
     this.userId= navParams.get('userId');
   }
+  changeColour(colour) {
+    this.currentColour = colour;
+  }
 
   note = { title: "", description: "", user_id:0};
   showRadio() {
     let alert = this.alertCtrl.create();
     alert.setTitle('Choose note color');
 
-    alert.addInput({
-      type: 'radio',
-      label: 'Blue',
-      value: 'blue',
-      checked: true
-    });
-
-    alert.addButton('Cancel');
-    alert.addButton({
-      text: 'OK',
-      handler: data => {
-        //this.testRadioOpen = false;
-        //this.testRadioResult = data;
-      }
-    });
-    alert.present();
-  }
 
   createNote() {
     this.note.user_id = this.userId;
@@ -57,17 +43,16 @@ export class CreatePage {
   takePhoto() {
     console.log('camera');
     const options: CameraOptions = {
-      quality: 70,
+      quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      this.photo = 'data:image/jpeg;base64' + imageData;
+      this.photo = 'data:image/jpeg;base64,' + imageData;
       console.log('photo');
     }, (error) => {
-      //handle error
       console.log(error);
     });
   }
@@ -75,17 +60,16 @@ export class CreatePage {
   addPhoto() {
     console.log('camera');
     const options: CameraOptions = {
-      quality: 70,
+      quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
       saveToPhotoAlbum: false
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      this.photo = 'data:image/jpeg;base64' + imageData;
+      this.photo = 'data:image/jpeg;base64,' + imageData;
       console.log('photo');
     }, (error) => {
-      //handle error
       console.log(error);
     });
   }

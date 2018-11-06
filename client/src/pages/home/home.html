@@ -14,13 +14,11 @@
     <ion-list>
       <ion-item>
         <ion-card>
-
           <ion-item>
             <ion-icon item-start name="person"></ion-icon>
             <h2>Tomas Amado</h2>
-            <p>tomasamado@gmail.com</p>
+            <p style="text-overflow:ellipsis;">tomasamado@gmail.com</p>
           </ion-item>
-
           <ion-card-content>
             <p>Username</p>
           </ion-card-content>
@@ -33,7 +31,6 @@
       </ion-item>
       <ion-item menuClose detail-none>Close Menu</ion-item>
     </ion-list>
-
   </ion-content>
 </ion-menu>
 
@@ -41,12 +38,12 @@
 
 <ion-content>
   <ion-searchbar (ionInput)="getItems($event)" [(ngModel)]="searchText" placeholder="Search your notes"
-    showCancelButton="true" (ionClear)="onClear(ev)"> </ion-searchbar>
+    showCancelButton="true" (ionClear)="onCancel(ev)"> </ion-searchbar>
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let note of notes" col-6 no-padding>
         <ion-item-group>
-          <ion-card style="background-color: thistle" (click)="getSingularNote(note)">
+          <ion-card [style.background-color]="this.currentColour" (click)="getSingularNote(note)">
             <ion-card-header>
               {{note.title}}
             </ion-card-header>
@@ -62,7 +59,6 @@
 
 
 <ion-footer>
-
   <button ion-button icon-only round (click)="goCreate()" class="addbutton">
     <ion-icon name="create"></ion-icon>
   </button>
