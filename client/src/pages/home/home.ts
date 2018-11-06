@@ -13,6 +13,8 @@ import { _appIdRandomProviderFactory } from '@angular/core/src/application_token
 export class HomePage {
   searchText: string;
   notes: any;
+  currentColour: string = '#ffffff';
+  availableColours: any;
   note = {
     title: "",
     description: "",
@@ -40,7 +42,7 @@ export class HomePage {
     }
   }
 
-  onClear(ev) {
+  onCancel(ev) {
     this.initializeItems();
   }
 
@@ -60,9 +62,6 @@ export class HomePage {
     this.navCtrl.push(CreatePage)
   }
 
-  ionViewWillEnter() {
-    this.viewCtrl.showBackButton(false);
-  }
 
   showConfirm() {
     const confirm = this.alertCtrl.create({

@@ -4,16 +4,14 @@
 </ion-header>
 
 <ion-content padding>
-
-  <ion-list inset *ngFor="let note of notes">
+  <ion-list inset>
 
     <ion-item>
       <ion-title>{{note.title}}</ion-title>
     </ion-item>
 
-
     <ion-item>
-      <p>{{note.description}}</p>
+        <ion-textarea placeholder="Note" [(ngModel)]="note.description" name="description"> {{note.description}}</ion-textarea>
     </ion-item>
 
   </ion-list>
@@ -27,6 +25,11 @@
           <ion-icon name="checkmark-circle"></ion-icon>
         </button>
       </ion-col>
+      <ion-buttons right>
+        <button ion-button icon-only round (click)="deleteNote()" class="createbutton">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-buttons>
     </ion-row>
   </ion-grid>
 </ion-footer>

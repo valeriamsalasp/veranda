@@ -8,31 +8,38 @@ import { RestProvider } from '../../providers/rest/rest';
   templateUrl: 'view-note.html',
 })
 export class ViewNotePage {
-  note:any;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams,  public restProvider: RestProvider) {
-    this.note= navParams.get('note');
+  notes: any;
+  note = {
+    title: "",
+    description: "",
+    id: 0
   }
 
-  ionViewDidLoad(){
+  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
+    this.note = navParams.get('note');
+  }
+
+  ionViewDidLoad() {
     console.log(this.note.id);
   }
-  
-  deleteNote(){
-    this.restProvider.deleteNote(this.note.id)
-  }
-}
 
-//   updateNote(){
-//     console.log(this.note);
-//     this.restProvider.createNote(this.note).then((result) => {
-//         console.log(result);
-//     }, (err) => {
-//         console.log(err);
-//     });
-//     this.navCtrl.pop();
-//   }
-//   goBack(){
-//     this.navCtrl.pop()
-//   }
-// }
+  deleteNote() {
+    this.restProvider.deleteNote(this.note.id)
+      .then(data => {
+        this.notes = data;
+        console.log(this.notes);
+      });
+    this.navCtrl.pop();
+  }
+
+  updateNote() {
+    console.log(this.note);
+    this.restProvider.updateNote(this.note).then((result) => {
+      console.log(result);
+    }, (err) => {
+      console.log(err);
+    });
+    this.navCtrl.pop();
+  }
+
+}

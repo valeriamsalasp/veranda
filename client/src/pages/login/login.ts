@@ -31,7 +31,6 @@ export class LoginPage {
         }, (err) => {
             console.log(err);
         });
-        this.navCtrl.push(HomePage)
     }
 
     goRegister() {
