@@ -14,9 +14,14 @@ export class CreatePage {
   title: string;
   notes: any;
   photo: any;
+  photolibrary: any;
   userId: number;
   currentColour: string = '#ffffff';
   availableColours: any;
+  drawing:any = {
+    id: null,
+    src: null
+  }
 
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams, public modalCtrl: ModalController, public restProvider: RestProvider, private photoLibrary: PhotoLibrary, private viewCtrl: ViewController, private camera: Camera) {
@@ -76,8 +81,8 @@ export class CreatePage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      this.photo = 'data:image/jpeg;base64,' + imageData;
-      console.log('photo');
+      this.photolibrary = 'data:image/jpeg;base64,' + imageData;
+      console.log('photo from library');
     }, (error) => {
       console.log(error);
     });

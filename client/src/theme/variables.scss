@@ -40,6 +40,9 @@ $colors: (
   light:      #7273cc,
   dark:       #7273cc
 );
+$text-input-md-show-focus-highlight: false !default;
+$text-input-md-show-valid-highlight: $text-input-md-show-focus-highlight !default;
+$text-input-md-show-invalid-highlight: $text-input-md-show-focus-highlight !default;
 
 
 // App iOS Variables

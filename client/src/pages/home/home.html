@@ -20,7 +20,7 @@
             <p style="text-overflow:ellipsis;">{{user.email}}</p>
           </ion-item>
           <ion-card-content>
-            <p>{{user.username}}</p>
+            <p> @{{user.username}}</p>
           </ion-card-content>
         </ion-card>
       </ion-item>
@@ -38,7 +38,7 @@
 
 <ion-content>
   <ion-searchbar (ionInput)="getItems($event)" [(ngModel)]="searchText" placeholder="Search your notes"
-    showCancelButton="true" (ionClear)="onCancel(ev)" (ionCancel)="isSearchbarOpened=false"> </ion-searchbar>
+    showCancelButton="true" (ionClear)="onCancel(ev)"> </ion-searchbar>
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let note of notes" col-6 no-padding>

@@ -10,5 +10,15 @@ page-create {
     .crbutton{
         background-color:#7273cc;
     }
+    .list a.item{
+        border-top: 0px;
+        border-left: 0px;
+        border-right: 0px;
+        border-bottom: 0px;
+    }
+    
+    input[type="text"]{
+        font-size:25px;
+    }
 
 }

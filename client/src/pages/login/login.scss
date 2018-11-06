@@ -19,4 +19,8 @@ page-login {
         margin-right: auto;
         text-align: center;
     }
+
+    .no-scroll .scroll-content{
+        overflow-y: hidden;
+    }
 }

@@ -77,18 +77,20 @@ export class CanvasDrawComponent {
     let ctx = this.canvasElement.getContext('2d');
     ctx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
   }
-  goBack(){
+  goBack() {
     this.navCtrl.pop()
   }
 
-  saveDrawing(){
+  saveDrawing() {
     var dataUrl = this.canvasElement.toDataURL();
- 
+
     let ctx = this.canvasElement.getContext('2d');
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-  
+
     let name = new Date().getTime() + '.png';
-    
-    this.nativeStorage.setItem(name,dataUrl)
+
+    this.nativeStorage.setItem(name, dataUrl);
+    console.log(name)
   }
+
 }
