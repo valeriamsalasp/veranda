@@ -19,7 +19,7 @@ const tokenHeader = {
 
 @Injectable()
 export class RestProvider {
-  apiUrl = 'http://localhost:8100/';
+  apiUrl = 'http://192.168.1.7:8100/';
 
   constructor(public http: HttpClient, public storageProvider: StorageProvider) {
 

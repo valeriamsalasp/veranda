@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ViewController, AlertController } from 'ionic-angular';
+import { NavController, ViewController, AlertController, NavParams } from 'ionic-angular';
 import { CreatePage } from '../create/create';
 import { LoginPage } from '../login/login';
 import { RestProvider } from '../../providers/rest/rest';
@@ -18,9 +18,11 @@ export class HomePage {
     description: "",
     id: 0
   }
+  userId = 0;
 
-  constructor(public navCtrl: NavController, private viewCtrl: ViewController, public alertCtrl: AlertController, public restProvider: RestProvider) {
+  constructor(public navCtrl: NavController, private viewCtrl: ViewController, public alertCtrl: AlertController, public restProvider: RestProvider, public navParams: NavParams) {
     this.initializeItems();
+    this.userId= navParams.get('userId');
   }
 
   initializeItems() {
@@ -57,7 +59,7 @@ export class HomePage {
   }
 
   goCreate() {
-    this.navCtrl.push(CreatePage)
+    this.navCtrl.push(CreatePage, {userId:this.userId})
   }
 
   ionViewWillEnter() {
@@ -88,13 +90,6 @@ export class HomePage {
     this.navCtrl.push(ViewNotePage);
   }
 
-  // deleteNote(){
-  //   this.restProvider.deleteNote()
-  //    .then(data=>{
-  //       this.notes = data;
-  //       console.log(this.notes);
-  //    });
-  // }
 
   getSingularNote(note) {
     this.navCtrl.push(ViewNotePage, {note:note});

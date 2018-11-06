@@ -83,14 +83,13 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^2.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-sqlite-storage" spec="2.5.1" />
-    <engine name="android" spec="^7.1.1" />
     <plugin name="cordova-plugin-photo-library" spec="2.1.1">
         <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="To choose photos" />
     </plugin>
     <plugin name="cordova-plugin-googleplus" spec="5.3.2">
         <variable name="REVERSED_CLIENT_ID" value="myreversedclientid" />
     </plugin>
-    <engine name="android" spec="^7.1.1" />
     <plugin name="cordova-plugin-nativestorage" spec="2.3.2" />
     <plugin name="cordova-plugin-camera" spec="4.0.3" />
+    <engine name="android" spec="^7.1.1" />
 </widget>

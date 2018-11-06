@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, ViewController } from 'ionic-angular';
+import { NavController, AlertController, ViewController, NavParams } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { PhotoLibrary } from '@ionic-native/photo-library';
@@ -14,12 +14,13 @@ export class CreatePage {
   title: string;
   notes: any;
   photo: any;
+  userId: number;
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public modalCtrl: ModalController, public restProvider: RestProvider, private photoLibrary: PhotoLibrary, private viewCtrl: ViewController, private camera: Camera) {
-
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams, public modalCtrl: ModalController, public restProvider: RestProvider, private photoLibrary: PhotoLibrary, private viewCtrl: ViewController, private camera: Camera) {
+    this.userId= navParams.get('userId');
   }
 
-  note = { title: "", description: "", user_id: 2 };
+  note = { title: "", description: "", user_id:0};
   showRadio() {
     let alert = this.alertCtrl.create();
     alert.setTitle('Choose note color');
@@ -43,6 +44,7 @@ export class CreatePage {
   }
 
   createNote() {
+    this.note.user_id = this.userId;
     console.log(this.note);
     this.restProvider.createNote(this.note).then((result) => {
       console.log(result);

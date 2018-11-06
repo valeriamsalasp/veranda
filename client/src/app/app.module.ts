@@ -18,6 +18,7 @@ import { NativeStorage } from '@ionic-native/native-storage';
 import { StorageProvider } from '../providers/storage/storage';
 import { CanvasPage } from '../pages/canvas/canvas';
 
+
 @NgModule({
   declarations: [
     MyApp,

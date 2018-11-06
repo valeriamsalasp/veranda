@@ -4,6 +4,7 @@ import { RegisterPage } from '../register/register';
 import { HomePage } from '../home/home';
 import { RestProvider } from '../../providers/rest/rest';
 import { StorageProvider } from '../../providers/storage/storage';
+import { JwtHelper } from 'angular2-jwt';
 
 
 @Component({
@@ -13,7 +14,8 @@ import { StorageProvider } from '../../providers/storage/storage';
 export class LoginPage {
     user = {username: '', password:''};
     arr = [];
-
+    userId = 0;
+    jwtHelper: JwtHelper = new JwtHelper();
     constructor(public navCtrl: NavController, private viewCtrl: ViewController, public restProvider: RestProvider, public storageProvider: StorageProvider) {
     }
 
@@ -26,12 +28,13 @@ export class LoginPage {
                 }
             }
             console.log(this.arr[1]);
+            var decoded = this.jwtHelper.decodeToken(this.arr[1]);
+            this.userId = decoded.user_id;
             this.storageProvider.storeData(this.arr[1])
-            this.navCtrl.push(HomePage)
+            this.navCtrl.push(HomePage,{userId:this.userId})
         }, (err) => {
             console.log(err);
         });
-        this.navCtrl.push(HomePage)
     }
 
     goRegister() {
