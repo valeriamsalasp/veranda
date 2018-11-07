@@ -19,17 +19,17 @@ export class CreatePage {
   userId: number;
   currentColour: string = '#ffffff';
   availableColours: any;
-  drawing:any = {
+  drawing: any = {
     id: null,
     src: null
   }
   isRecording = false;
-  match:string;
+  match: string;
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams, public modalCtrl: ModalController, 
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams, public modalCtrl: ModalController,
     public restProvider: RestProvider, private photoLibrary: PhotoLibrary, private viewCtrl: ViewController, private camera: Camera
     , private speechRecognition: SpeechRecognition, private plt: Platform, private cd: ChangeDetectorRef) {
-    this.userId= navParams.get('userId');
+    this.userId = navParams.get('userId');
     this.availableColours = [
       '#b4ecb4',
       '#99dbef',
@@ -41,39 +41,39 @@ export class CreatePage {
 
   }
 
-  note ={title:"", description:"", user_id:0, color:""};
+  note:any = { title: "", description: "", user_id: 0};
 
-  ionViewDidLoad(){
+  ionViewDidLoad() {
     this.speechRecognition.hasPermission()
-    .then((hasPermission: boolean) => {
-      if (!hasPermission) {
-        this.speechRecognition.requestPermission();
-      }
-    });
+      .then((hasPermission: boolean) => {
+        if (!hasPermission) {
+          this.speechRecognition.requestPermission();
+        }
+      });
   }
 
   isIos() {
     return this.plt.is('ios');
   }
- 
+
   stopListening() {
     this.speechRecognition.stopListening().then(() => {
       this.isRecording = false;
     });
   }
 
- 
+
   startListening() {
     let options = {
       language: 'en-US'
     }
     this.speechRecognition.startListening().subscribe((matches: Array<string>) => {
-      this.note.description= this.note.description + " " + matches[0];
+      this.note.description = this.note.description + " " + matches[0];
       this.cd.detectChanges();
     });
     this.isRecording = true;
   }
- 
+
   changeColour(colour) {
     this.note.color = colour;
   }
@@ -100,7 +100,7 @@ export class CreatePage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      //this.note.image = 'data:image/jpeg;base64,' + imageData;
+      this.note.image = 'data:image/jpeg;base64,' + imageData;
       console.log('photo');
     }, (error) => {
       console.log(error);
@@ -117,14 +117,15 @@ export class CreatePage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-     // this.note.image = 'data:image/jpeg;base64,' + imageData;
+      this.note.image = 'data:image/jpeg;base64,' + imageData;
       console.log('photo from library');
+      console.log(this.note.image);
     }, (error) => {
       console.log(error);
     });
   }
 
-  canvas(){
+  canvas() {
     this.navCtrl.push(CanvasPage)
   }
 }
