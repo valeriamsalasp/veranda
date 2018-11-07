@@ -28,7 +28,6 @@ export class HomePage {
   }
   user={};
   userId = 0;
-  user={};
   items:any;
   public isSearchbarOpened = false;
 
@@ -133,14 +132,6 @@ export class HomePage {
     //     console.log(this.notes);
     //   });
     // this.navCtrl.push(ViewNotePage);
-  }
-
-  getSingularUser() {
-    this.restProvider.getSingularUser(this.userId)
-      .then(data => {
-        this.user = data;
-        console.log(this.user);
-      });
   }
 }
 

@@ -23,25 +23,25 @@
 
   <ion-list lines=“none”>
     <ion-item no-lines [style.background-color]="this.currentColour">
+      <p style="text-align: center"><img src="{{ photo }}"></p>
+    </ion-item>
+    <ion-item no-lines [style.background-color]="this.currentColour">
+      <p style="text-align: center"><img src="{{ photolibrary }}"></p>
+    </ion-item>
+    <ion-item no-lines [style.background-color]="this.currentColour">
       <ion-input type="text" placeholder="Title" [(ngModel)]="note.title" name="title"></ion-input>
     </ion-item>
 
     <ion-item no-lines [style.background-color]="this.currentColour">
       <ion-textarea placeholder="Note" rows=12 [(ngModel)]="note.description" name="description"></ion-textarea>
     </ion-item>
-
-    <ion-item *ngFor="let match of matches">
+    <ion-item no-lines>
       {{ match }}
-    </ion-item>
-
-    <ion-item no-lines [style.background-color]="this.currentColour">
-      <p style="text-align: center"><img src="{{ photo }}"></p>
-    </ion-item>
-    <ion-item no-lines [style.background-color]="this.currentColour">
-      <p style="text-align: center"><img src="{{ photolibrary }}"></p>
     </ion-item>
   </ion-list>
 </ion-content>
+
+
 
 <ion-footer>
   <ion-toolbar>

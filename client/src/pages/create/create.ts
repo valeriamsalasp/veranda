@@ -15,7 +15,6 @@ import { ChangeDetectorRef } from '@angular/core';
 export class CreatePage {
   title: string;
   notes: any;
-  photo: any;
   photolibrary: any;
   userId: number;
   currentColour: string = '#ffffff';
@@ -26,7 +25,7 @@ export class CreatePage {
   }
   matches: String[];
   isRecording = false;
-
+  match:string;
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams, public modalCtrl: ModalController, 
     public restProvider: RestProvider, private photoLibrary: PhotoLibrary, private viewCtrl: ViewController, private camera: Camera
@@ -41,6 +40,9 @@ export class CreatePage {
       '#FFFFFF'
     ];
   }
+
+  note = {title: "", description: "", user_id:0, image:''};
+
   isIos() {
     return this.plt.is('ios');
   }
@@ -51,21 +53,21 @@ export class CreatePage {
     });
   }
  
-  getPermission() {
+  ionViewDidLoad(){
     this.speechRecognition.hasPermission()
-      .then((hasPermission: boolean) => {
-        if (!hasPermission) {
-          this.speechRecognition.requestPermission();
-        }
-      });
+    .then((hasPermission: boolean) => {
+      if (!hasPermission) {
+        this.speechRecognition.requestPermission();
+      }
+    });
   }
- 
   startListening() {
     let options = {
       language: 'en-US'
     }
-    this.speechRecognition.startListening().subscribe(matches => {
-      this.matches = matches;
+    this.speechRecognition.startListening().subscribe((matches: Array<string>) => {
+      this.note.description= this.note.description + matches[0];
+      console.log(matches)
       this.cd.detectChanges();
     });
     this.isRecording = true;
@@ -75,7 +77,6 @@ export class CreatePage {
     this.currentColour = colour;
   }
 
-  note = { title: "", description: "", user_id:0};
 
   createNote() {
     this.note.user_id = this.userId;
@@ -98,7 +99,7 @@ export class CreatePage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      this.photo = 'data:image/jpeg;base64,' + imageData;
+      this.note.image = 'data:image/jpeg;base64,' + imageData;
       console.log('photo');
     }, (error) => {
       console.log(error);
@@ -115,7 +116,7 @@ export class CreatePage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      this.photolibrary = 'data:image/jpeg;base64,' + imageData;
+      this.note.image = 'data:image/jpeg;base64,' + imageData;
       console.log('photo from library');
     }, (error) => {
       console.log(error);

@@ -124,7 +124,7 @@ export class RestProvider {
       });
     });
   }
-
+  
   getSingularNote(note) {
     console.log(note);
   }
