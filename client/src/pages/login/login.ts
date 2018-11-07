@@ -7,6 +7,7 @@ import { StorageProvider } from '../../providers/storage/storage';
 import { JwtHelper } from 'angular2-jwt';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Storage } from '@ionic/storage';
+import { AlertController } from 'ionic-angular';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class LoginPage {
     userId = 0;
     token: any;
     jwtHelper: JwtHelper = new JwtHelper();
-    constructor(public navCtrl: NavController, public restProvider: RestProvider, public storageProvider: StorageProvider, public nativeStorage: NativeStorage, private storage: Storage) {
+    constructor(public navCtrl: NavController,private alertCtrl: AlertController, public restProvider: RestProvider, public storageProvider: StorageProvider, public nativeStorage: NativeStorage, private storage: Storage) {
     }
 
     login() {
@@ -39,7 +40,12 @@ export class LoginPage {
 
             this.navCtrl.push(HomePage, { userId: this.userId });
         }, (err) => {
-            console.log(err);
+            let alert = this.alertCtrl.create({
+                title: 'Invalid Credentials',
+                subTitle: 'Combination user/password incorrect',
+                buttons: ['Dismiss']
+              });
+              alert.present();
         });
     }
 

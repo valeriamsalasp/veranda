@@ -6,6 +6,7 @@ import { NativeStorage } from '@ionic-native/native-storage';
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { AlertController } from 'ionic-angular';
 
 
 const httpOptions = {
@@ -13,16 +14,21 @@ const httpOptions = {
     'Content-Type': 'application/json',
   })
 };
-
+ const tokenHeader = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTQxODU2MDM5LCJqdGkiOiI3OTZiOWQ5NmJkMDU0MzI4YjkyMmMzZDg2MTZlMzkxMyIsInVzZXJfaWQiOjV9.tyaaW7oYeGkS6SIr4ZMLKP5Y5P3U2aLnwkyAUsflPeg'
+  })
+};
 
 
 @Injectable()
 export class RestProvider {
   token: any;
-  apiUrl = 'http://192.168.1.7:8100/';
+  apiUrl = 'http://localhost:8100/';
   tokenHeader = {};
 
-  constructor(public http: HttpClient, public nativeStorage: NativeStorage, public storageProvider: StorageProvider, public plt: Platform, private storage: Storage) {
+  constructor(public http: HttpClient, private alertCtrl: AlertController, public nativeStorage: NativeStorage, public storageProvider: StorageProvider, public plt: Platform, private storage: Storage) {
   }
 
   getToken() {
@@ -85,7 +91,7 @@ export class RestProvider {
 
   getNotes() {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + 'note', this.tokenHeader).subscribe(data => {
+      this.http.get(this.apiUrl + 'note', tokenHeader).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -95,7 +101,7 @@ export class RestProvider {
 
   createNote(data) {
     return new Promise((resolve, reject) => {
-      this.http.post(this.apiUrl + 'note/', JSON.stringify(data), this.tokenHeader)
+      this.http.post(this.apiUrl + 'note/', JSON.stringify(data), tokenHeader)
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -106,7 +112,7 @@ export class RestProvider {
 
   deleteNote(id) {
     return new Promise(resolve => {
-      this.http.delete(this.apiUrl + 'note/' + id + '/', this.tokenHeader).subscribe(data => {
+      this.http.delete(this.apiUrl + 'note/' + id + '/', tokenHeader).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -117,7 +123,7 @@ export class RestProvider {
   updateNote(data) {
     var updateUrl = this.apiUrl + 'note/' + data.id + '/'
     return new Promise(resolve => {
-      this.http.put(updateUrl, data, this.tokenHeader).subscribe(data => {
+      this.http.put(updateUrl, data, tokenHeader).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);

@@ -1,10 +1,10 @@
 <ion-header>
-    <ion-toolbar no-border-top>
-        <button ion-button icon-only menuToggle left>
-            <ion-icon class="menubutton" name="menu"></ion-icon>
-          </button>
-        <ion-searchbar placeholder="Filter Items" (ionInput)="filterItems($event)"></ion-searchbar>
-      </ion-toolbar>
+  <ion-toolbar no-border-top>
+    <button ion-button icon-only menuToggle left>
+      <ion-icon class="menubutton" name="menu"></ion-icon>
+    </button>
+    <ion-searchbar placeholder="Filter Items" (ionInput)="filterItems($event)" (ionCancel)="onCancel($event)"></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 

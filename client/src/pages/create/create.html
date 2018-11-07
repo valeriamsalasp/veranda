@@ -13,30 +13,21 @@
         <ion-icon [style.color]="colour" name="water"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-buttons class="center">
-      <button ion-button icon-only clear (click)="startListening()">
-        <ion-icon name="mic"></ion-icon>
-      </button>
-      <button ion-button icon-only clear (click)="stopListening()" *ngIf="isIos()">
-        <ion-icon name="mic-off"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-list>
   <br>
 
   <ion-list lines=“none”>
     <ion-item no-lines [style.background-color]="note.color">
+      <ion-input type="text" placeholder="Title" [(ngModel)]="note.title" name="title"></ion-input>
+    </ion-item>
+    <ion-item no-lines [style.background-color]="note.color">
+      <ion-textarea placeholder="Note" rows=12 [(ngModel)]="note.description" name="description">{{note.description}}</ion-textarea>
+    </ion-item>
+    <ion-item no-lines [style.background-color]="note.color">
       <p style="text-align: center"><img src="{{ photo }}"></p>
     </ion-item>
     <ion-item no-lines [style.background-color]="note.color">
       <p style="text-align: center"><img src="{{ photolibrary }}"></p>
-    </ion-item>
-    <ion-item no-lines [style.background-color]="note.color">
-      <ion-input type="text" placeholder="Title" [(ngModel)]="note.title" name="title"></ion-input>
-    </ion-item>
-
-    <ion-item no-lines [style.background-color]="note.color">
-      <ion-textarea placeholder="Note" rows=12 [(ngModel)]="note.description" name="description">{{note.description}}</ion-textarea>
     </ion-item>
   </ion-list>
 </ion-content>
@@ -70,6 +61,12 @@
     </button>
     <button ion-button icon-only clear outline (click)="canvas()" class="createbutton">
       <ion-icon name="color-wand"></ion-icon>
+    </button>
+    <button ion-button icon-only clear outline (click)="startListening()" class="createbutton">
+      <ion-icon name="mic"></ion-icon>
+    </button>
+    <button ion-button icon-only clear outline (click)="stopListening()" *ngIf="isIos()" class="createbutton">
+      <ion-icon name="mic-off"></ion-icon>
     </button>
   </ion-fab-list>
 </ion-fab>

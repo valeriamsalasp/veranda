@@ -1,12 +1,10 @@
-import { Component } from '@angular/core';
-import { NavController, ViewController, AlertController, NavParams } from 'ionic-angular';
+import { Component, ViewChild, Pipe } from '@angular/core';
+import { NavController, ViewController, AlertController, NavParams, Searchbar } from 'ionic-angular';
 import { CreatePage } from '../create/create';
 import { LoginPage } from '../login/login';
 import { RestProvider } from '../../providers/rest/rest';
 import { ViewNotePage } from '../view-note/view-note';
 import { _appIdRandomProviderFactory } from '@angular/core/src/application_tokens';
-import { ViewChild } from '@angular/core';
-import { Searchbar } from 'ionic-angular';
 import { StorageProvider } from '../../providers/storage/storage';
 
 @Component({
@@ -15,9 +13,9 @@ import { StorageProvider } from '../../providers/storage/storage';
 })
 export class HomePage {
 
+
   @ViewChild('mySearchbar') searchbar: Searchbar;
 
-  searchText: string;
   notes: any;
   currentColour: string = '#ffffff';
   availableColours: any;
@@ -28,6 +26,7 @@ export class HomePage {
   }
   user = {};
   userId = 0;
+  items: any;
 
   constructor(public navCtrl: NavController, private viewCtrl: ViewController, public alertCtrl: AlertController, public restProvider: RestProvider, public navParams: NavParams, public storageProvider: StorageProvider) {
     this.userId = navParams.get('userId');
@@ -37,53 +36,37 @@ export class HomePage {
       '#99dbef',
       '#f7cac9',
       '#a8a8a8',
-      '#91A8d0',
-      '#FFFFFF'
+      '#91a8d0',
+      '#ffffff'
     ];
 
-    // for (let note = 0; note < 10; note++) {
-    //   this.notes.push(this.notes.length);
-    // }
   }
 
-  // doInfinite(infiniteScroll) {
-  //   console.log('Begin async operation');
+  setItems() {
+    this.items = this.notes;
+  }
 
-  //   setTimeout(() => {
-  //       for (let note = 0; note < 10; note++) {
-  //         this.notes.push(this.notes.length);
-  //       }
+  filterItems(ev: any) {
+    //zthis.setItems();\
+    let val = ev.target.value;
 
+    if (val && val.trim() !== '') {
+      this.notes = this.notes.filter(function (note) {
+        return note.title.toLowerCase().includes(val.toLowerCase());
+      });
+    }
+  }
 
-  //     console.log('Async operation has ended');
-  //     infiniteScroll.complete();
-  //   }, 500);
-  // }
-
-  // initializeItems() {
-  //   this.notes;
-  // }
 
   ionViewDidLoad() {
     this.restProvider.getToken();
   }
 
-  // getItems(ev: any) {
 
-  //   this.initializeItems();
 
-  //   const val = ev.target.value;
-
-  //   if (val && val.trim() != '') {
-  //     this.notes = this.notes.filter((note) => {
-  //       return (note.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
-  //     })
-  //   }
-  // }
-
-  // onCancel(ev) {
-  //   this.searchbar.value = '';
-  // }
+  onCancel(ev) {
+    this.searchbar.value = '';
+  }
 
 
   ionViewDidEnter() {

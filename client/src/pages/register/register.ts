@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Validators } from '@angular/forms'
 import { RestProvider } from '../../providers/rest/rest';
 import { LoginPage } from '../login/login';
-
+import { AlertController } from 'ionic-angular';
 
 @Component({
     selector: 'page-register',
@@ -13,25 +12,39 @@ export class RegisterPage {
 
     createSuccess = false;
 
-    username:string;
+    username: string;
     email: string;
-    password :string;
-    first_name:string;
-    last_name:string;
+    password: string;
+    first_name: string;
+    last_name: string;
 
-    user = {username: '', email: '', password:'', first_name: '', last_name:'' };
-    
+    user: any = { username: '', email: '', password: '', first_name: '', last_name: '' };
 
-    constructor(public navCtrl: NavController, public restProvider: RestProvider) {
+
+    constructor(public navCtrl: NavController, private alertCtrl: AlertController, public restProvider: RestProvider) {
     }
-    
+
     registerUser() {
-        console.log(this.user);
-        this.restProvider.addUser(this.user).then((result) => {
-            console.log(result);
-            this.navCtrl.push(LoginPage)
-        }, (err) => {
-            console.log(err);
-        });
+        if (this.user.username == "" || this.user.email == "" || this.user.password == "" ||
+            this.user.first_name == "" || this.user.last_name == "") {
+            (this.alertCtrl.create({
+                title: 'Error',
+                subTitle: 'Please fill all the fields',
+                buttons: ['OK']
+            })).present();
+        } else {
+            console.log(this.user);
+            this.restProvider.addUser(this.user).then((result) => {
+                console.log(result);
+                this.navCtrl.push(LoginPage)
+            }, (err) => {
+                let alert = this.alertCtrl.create({
+                    title: 'Invalid email',
+                    subTitle: 'Please enter a valid email',
+                    buttons: ['Dismiss']
+                });
+                alert.present();
+            });
+        }
     }
 }

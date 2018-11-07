@@ -21,6 +21,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
 
 
+
 @NgModule({
   declarations: [
     MyApp,
@@ -36,7 +37,7 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -60,6 +61,7 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition';
     Camera,
     PhotoLibrary,
     SpeechRecognition
+
   ]
 })
 export class AppModule {}
