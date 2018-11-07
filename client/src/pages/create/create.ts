@@ -15,7 +15,6 @@ import { ChangeDetectorRef } from '@angular/core';
 export class CreatePage {
   title: string;
   notes: any;
-  photo: any;
   photolibrary: any;
   userId: number;
   currentColour: string = '#ffffff';
@@ -25,7 +24,8 @@ export class CreatePage {
     src: null
   }
   isRecording = false;
-  match: string;
+  match:string;
+
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams, public modalCtrl: ModalController, 
     public restProvider: RestProvider, private photoLibrary: PhotoLibrary, private viewCtrl: ViewController, private camera: Camera
     , private speechRecognition: SpeechRecognition, private plt: Platform, private cd: ChangeDetectorRef) {
@@ -66,7 +66,7 @@ export class CreatePage {
       language: 'en-US'
     }
     this.speechRecognition.startListening().subscribe((matches: Array<string>) => {
-      this.match= matches[0];
+      this.note.description= this.note.description + matches[0];
       console.log(matches)
       this.cd.detectChanges();
     });
@@ -77,7 +77,6 @@ export class CreatePage {
     this.currentColour = colour;
   }
 
-  note = { title: "", description: "", user_id:0};
 
   createNote() {
     this.note.user_id = this.userId;
@@ -100,7 +99,7 @@ export class CreatePage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      this.photo = 'data:image/jpeg;base64,' + imageData;
+      this.note.image = 'data:image/jpeg;base64,' + imageData;
       console.log('photo');
     }, (error) => {
       console.log(error);
@@ -117,7 +116,7 @@ export class CreatePage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      this.photolibrary = 'data:image/jpeg;base64,' + imageData;
+      this.note.image = 'data:image/jpeg;base64,' + imageData;
       console.log('photo from library');
     }, (error) => {
       console.log(error);
