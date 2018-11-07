@@ -5,6 +5,7 @@ import { LoginPage } from '../login/login';
 import { RestProvider } from '../../providers/rest/rest';
 import { ViewNotePage } from '../view-note/view-note';
 import { _appIdRandomProviderFactory } from '@angular/core/src/application_tokens';
+import { StorageProvider } from '../../providers/storage/storage';
 
 @Component({
   selector: 'page-home',
@@ -23,7 +24,7 @@ export class HomePage {
   user={};
   userId = 0;
 
-  constructor(public navCtrl: NavController, private viewCtrl: ViewController, public alertCtrl: AlertController, public restProvider: RestProvider, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, private viewCtrl: ViewController, public alertCtrl: AlertController, public restProvider: RestProvider, public navParams: NavParams, public storageProvider: StorageProvider) {
     this.initializeItems();
     this.userId= navParams.get('userId');
     this.getSingularUser();
@@ -31,6 +32,10 @@ export class HomePage {
 
   initializeItems() {
     this.notes;
+  }
+
+  ionViewDidLoad(){
+    this.restProvider.getToken();
   }
 
   getItems(ev: any) {

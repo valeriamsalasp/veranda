@@ -17,6 +17,7 @@ import { RestProvider } from '../providers/rest/rest';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { StorageProvider } from '../providers/storage/storage';
 import { CanvasPage } from '../pages/canvas/canvas';
+import { IonicStorageModule } from '@ionic/storage';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { CanvasPage } from '../pages/canvas/canvas';
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

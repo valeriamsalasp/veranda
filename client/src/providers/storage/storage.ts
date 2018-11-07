@@ -17,11 +17,15 @@ export class StorageProvider {
     }
 
     getData() {
-        this.nativeStorage.getItem("JWT")
+        return new Promise((resolve, reject) => {
+            this.nativeStorage.getItem("JWT")
             .then(
-                data => console.log(data),
-                error => console.error('Error retreiving data', error)
-            );
+                res =>{
+                    return(res);
+                }, (err) =>{
+                    reject(err);
+                });
+        });
     }
 }
 //     getToken(token){
