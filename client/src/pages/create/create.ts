@@ -44,6 +44,7 @@ export class CreatePage {
   isIos() {
     return this.plt.is('ios');
   }
+
   stopListening() {
     this.speechRecognition.stopListening().then(() => {
       this.isRecording = false;
@@ -94,7 +95,7 @@ export class CreatePage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      //this.note.image = 'data:image/jpeg;base64,' + imageData;
+      this.note.image = 'data:image/jpeg;base64,' + imageData;
       console.log('photo');
     }, (error) => {
       console.log(error);
@@ -111,8 +112,9 @@ export class CreatePage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      // this.note.image = 'data:image/jpeg;base64,' + imageData;
+      this.note.image = 'data:image/jpeg;base64,' + imageData;
       console.log('photo from library');
+      console.log(this.note.image);
     }, (error) => {
       console.log(error);
     });
