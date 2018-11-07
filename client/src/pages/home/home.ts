@@ -6,7 +6,7 @@ import { RestProvider } from '../../providers/rest/rest';
 import { ViewNotePage } from '../view-note/view-note';
 import { _appIdRandomProviderFactory } from '@angular/core/src/application_tokens';
 import { ViewChild } from '@angular/core';
-import { Searchbar } from 'ionic-angular'; 
+import { Searchbar } from 'ionic-angular';
 import { StorageProvider } from '../../providers/storage/storage';
 
 @Component({
@@ -26,15 +26,12 @@ export class HomePage {
     description: "",
     id: 0,
   }
-  user={};
+  user = {};
   userId = 0;
-  user={};
-  items:any;
-  public isSearchbarOpened = false;
 
   constructor(public navCtrl: NavController, private viewCtrl: ViewController, public alertCtrl: AlertController, public restProvider: RestProvider, public navParams: NavParams, public storageProvider: StorageProvider) {
     this.initializeItems();
-    this.userId= navParams.get('userId');
+    this.userId = navParams.get('userId');
     this.getSingularUser();
     this.availableColours = [
       '#b4ecb4',
@@ -44,13 +41,31 @@ export class HomePage {
       '#91A8d0',
       '#FFFFFF'
     ];
+
+    // for (let note = 0; note < 10; note++) {
+    //   this.notes.push(this.notes.length);
+    // }
   }
+
+  // doInfinite(infiniteScroll) {
+  //   console.log('Begin async operation');
+
+  //   setTimeout(() => {
+  //       for (let note = 0; note < 10; note++) {
+  //         this.notes.push(this.notes.length);
+  //       }
+
+
+  //     console.log('Async operation has ended');
+  //     infiniteScroll.complete();
+  //   }, 500);
+  // }
 
   initializeItems() {
     this.notes;
   }
 
-  ionViewDidLoad(){
+  ionViewDidLoad() {
     this.restProvider.getToken();
   }
 
@@ -68,7 +83,7 @@ export class HomePage {
   }
 
   onCancel(ev) {
-    this.searchbar.value='';
+    this.searchbar.value = '';
   }
 
 
@@ -93,7 +108,7 @@ export class HomePage {
   }
 
   goCreate() {
-    this.navCtrl.push(CreatePage, {userId:this.userId})
+    this.navCtrl.push(CreatePage, { userId: this.userId })
   }
 
   changeColour(colour) {
@@ -126,21 +141,13 @@ export class HomePage {
 
 
   getSingularNote(note) {
-    this.navCtrl.push(ViewNotePage, {note:note});
+    this.navCtrl.push(ViewNotePage, { note: note });
     // this.restProvider.getSingularNote(this.note.id)
     //   .then(data => {
     //     this.notes = data;
     //     console.log(this.notes);
     //   });
     // this.navCtrl.push(ViewNotePage);
-  }
-
-  getSingularUser() {
-    this.restProvider.getSingularUser(this.userId)
-      .then(data => {
-        this.user = data;
-        console.log(this.user);
-      });
   }
 }
 

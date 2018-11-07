@@ -24,10 +24,8 @@ export class CreatePage {
     id: null,
     src: null
   }
-  matches: String[];
   isRecording = false;
-
-
+  match: string;
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams, public modalCtrl: ModalController, 
     public restProvider: RestProvider, private photoLibrary: PhotoLibrary, private viewCtrl: ViewController, private camera: Camera
     , private speechRecognition: SpeechRecognition, private plt: Platform, private cd: ChangeDetectorRef) {
@@ -40,7 +38,18 @@ export class CreatePage {
       '#91A8d0',
       '#FFFFFF'
     ];
+
   }
+
+  ionViewDidLoad(){
+    this.speechRecognition.hasPermission()
+    .then((hasPermission: boolean) => {
+      if (!hasPermission) {
+        this.speechRecognition.requestPermission();
+      }
+    });
+  }
+
   isIos() {
     return this.plt.is('ios');
   }
@@ -50,22 +59,15 @@ export class CreatePage {
       this.isRecording = false;
     });
   }
- 
-  getPermission() {
-    this.speechRecognition.hasPermission()
-      .then((hasPermission: boolean) => {
-        if (!hasPermission) {
-          this.speechRecognition.requestPermission();
-        }
-      });
-  }
+
  
   startListening() {
     let options = {
       language: 'en-US'
     }
-    this.speechRecognition.startListening().subscribe(matches => {
-      this.matches = matches;
+    this.speechRecognition.startListening().subscribe((matches: Array<string>) => {
+      this.match= matches[0];
+      console.log(matches)
       this.cd.detectChanges();
     });
     this.isRecording = true;

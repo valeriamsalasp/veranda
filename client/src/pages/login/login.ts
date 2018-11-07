@@ -24,7 +24,7 @@ export class LoginPage {
     }
 
     login() {
-
+        
         this.restProvider.login(this.user).then((result) => {
             for (let key in result) {
                 if (result.hasOwnProperty(key)) {
@@ -34,7 +34,7 @@ export class LoginPage {
 
             var decoded = this.jwtHelper.decodeToken(this.arr[1]);
             this.userId = decoded.user_id;
-
+            console.log(this.arr[1]);
             this.storage.set('JWT', this.arr[1]);
 
             this.navCtrl.push(HomePage, { userId: this.userId });
