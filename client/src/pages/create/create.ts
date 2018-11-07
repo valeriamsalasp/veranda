@@ -77,7 +77,6 @@ export class CreatePage {
 
   note = { title: "", description: "", user_id:0};
 
-
   createNote() {
     this.note.user_id = this.userId;
     console.log(this.note);

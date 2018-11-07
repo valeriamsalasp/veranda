@@ -2,6 +2,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { StorageProvider } from '../storage/storage';
 import { LoginPage } from '../../pages/login/login';
+import { NativeStorage } from '@ionic-native/native-storage';
+import { Component } from '@angular/core';
+import { Platform } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 
 const httpOptions = {
@@ -10,22 +14,32 @@ const httpOptions = {
   })
 };
 
-const tokenHeader = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTQxNzk2OTYwLCJqdGkiOiJlNDZmOTMzMGFiZTE0NTc0ODM0YTQwNTdlNTY3ZTViMSIsInVzZXJfaWQiOjV9.sFEs39LoyUbtR5rZkkpVTFBrzji83xe0reNcnR6ljpc'
-  })
-};
+
 
 @Injectable()
 export class RestProvider {
-  apiUrl = 'http://localhost:8100/';
+  token: any;
+  apiUrl = 'http://192.168.1.7:8100/';
+  tokenHeader = {};
 
-  constructor(public http: HttpClient, public storageProvider: StorageProvider) {
-
+  constructor(public http: HttpClient, public nativeStorage: NativeStorage, public storageProvider: StorageProvider, public plt: Platform, private storage: Storage) {
   }
 
-  //token = this.storageProvider.getData('JWT');
+  getToken() {
+    this.getFromStorage().then((result) => {
+      this.tokenHeader = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + result
+        })
+      };
+      console.log (this.tokenHeader);
+    });
+  }
+  getFromStorage() {
+    return this.storage.get('JWT');
+  }
+  
 
   login(data) {
     return new Promise((resolve, reject) => {
@@ -50,14 +64,14 @@ export class RestProvider {
 
   getSingularUser(userId) {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + 'user/'+userId).subscribe(data => {
+      this.http.get(this.apiUrl + 'user/' + userId).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
       });
     });
   }
-  
+
   addUser(data) {
     return new Promise((resolve, reject) => {
       this.http.post(this.apiUrl + 'user/', JSON.stringify(data), httpOptions)
@@ -71,7 +85,7 @@ export class RestProvider {
 
   getNotes() {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + 'note', tokenHeader).subscribe(data => {
+      this.http.get(this.apiUrl + 'note', this.tokenHeader).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -81,7 +95,7 @@ export class RestProvider {
 
   createNote(data) {
     return new Promise((resolve, reject) => {
-      this.http.post(this.apiUrl + 'note/', JSON.stringify(data), tokenHeader)
+      this.http.post(this.apiUrl + 'note/', JSON.stringify(data), this.tokenHeader)
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -92,7 +106,7 @@ export class RestProvider {
 
   deleteNote(id) {
     return new Promise(resolve => {
-      this.http.delete(this.apiUrl + 'note/' + id + '/', tokenHeader).subscribe(data => {
+      this.http.delete(this.apiUrl + 'note/' + id + '/', this.tokenHeader).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -102,8 +116,8 @@ export class RestProvider {
 
   updateNote(data) {
     var updateUrl = this.apiUrl + 'note/' + data.id + '/'
-    return new Promise(resolve => { 
-      this.http.put(updateUrl, data, tokenHeader).subscribe(data => {
+    return new Promise(resolve => {
+      this.http.put(updateUrl, data, this.tokenHeader).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);

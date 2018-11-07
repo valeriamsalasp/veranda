@@ -7,6 +7,7 @@ import { ViewNotePage } from '../view-note/view-note';
 import { _appIdRandomProviderFactory } from '@angular/core/src/application_tokens';
 import { ViewChild } from '@angular/core';
 import { Searchbar } from 'ionic-angular'; 
+import { StorageProvider } from '../../providers/storage/storage';
 
 @Component({
   selector: 'page-home',
@@ -25,12 +26,13 @@ export class HomePage {
     description: "",
     id: 0,
   }
+  user={};
   userId = 0;
   user={};
   items:any;
   public isSearchbarOpened = false;
 
-  constructor(public navCtrl: NavController, private viewCtrl: ViewController, public alertCtrl: AlertController, public restProvider: RestProvider, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, private viewCtrl: ViewController, public alertCtrl: AlertController, public restProvider: RestProvider, public navParams: NavParams, public storageProvider: StorageProvider) {
     this.initializeItems();
     this.userId= navParams.get('userId');
     this.getSingularUser();
@@ -46,6 +48,10 @@ export class HomePage {
 
   initializeItems() {
     this.notes;
+  }
+
+  ionViewDidLoad(){
+    this.restProvider.getToken();
   }
 
   getItems(ev: any) {
@@ -75,6 +81,14 @@ export class HomePage {
       .then(data => {
         this.notes = data;
         console.log(this.notes);
+      });
+  }
+
+  getSingularUser() {
+    this.restProvider.getSingularUser(this.userId)
+      .then(data => {
+        this.user = data;
+        console.log(this.user);
       });
   }
 
