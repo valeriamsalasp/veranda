@@ -24,13 +24,12 @@ export class HomePage {
   note = {
     title: "",
     description: "",
-    id: 0,
+    color: ""
   }
   user = {};
   userId = 0;
 
   constructor(public navCtrl: NavController, private viewCtrl: ViewController, public alertCtrl: AlertController, public restProvider: RestProvider, public navParams: NavParams, public storageProvider: StorageProvider) {
-    this.initializeItems();
     this.userId = navParams.get('userId');
     this.getSingularUser();
     this.availableColours = [
@@ -61,30 +60,30 @@ export class HomePage {
   //   }, 500);
   // }
 
-  initializeItems() {
-    this.notes;
-  }
+  // initializeItems() {
+  //   this.notes;
+  // }
 
   ionViewDidLoad() {
     this.restProvider.getToken();
   }
 
-  getItems(ev: any) {
+  // getItems(ev: any) {
 
-    this.initializeItems();
+  //   this.initializeItems();
 
-    const val = ev.target.value;
+  //   const val = ev.target.value;
 
-    if (val && val.trim() != '') {
-      this.notes = this.notes.filter((note) => {
-        return (note.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    }
-  }
+  //   if (val && val.trim() != '') {
+  //     this.notes = this.notes.filter((note) => {
+  //       return (note.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
+  //     })
+  //   }
+  // }
 
-  onCancel(ev) {
-    this.searchbar.value = '';
-  }
+  // onCancel(ev) {
+  //   this.searchbar.value = '';
+  // }
 
 
   ionViewDidEnter() {
@@ -112,7 +111,7 @@ export class HomePage {
   }
 
   changeColour(colour) {
-    this.currentColour = colour;
+    this.note.color = colour;
   }
 
   showConfirm() {

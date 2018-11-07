@@ -1,12 +1,12 @@
 <ion-header>
-  <ion-navbar [color]="isRecording ? 'green' : 'red'">
+  <ion-navbar>
     <ion-title>
       New note
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding no-bounce [style.background-color]="this.currentColour">
+<ion-content padding no-bounce [style.background-color]="note.color">
   <ion-list inset>
     <ion-buttons class="center">
       <button *ngFor="let colour of availableColours" color="light" icon-only ion-button outline (click)="changeColour(colour)">
@@ -25,21 +25,18 @@
   <br>
 
   <ion-list lines=“none”>
-    <ion-item no-lines [style.background-color]="this.currentColour">
+    <ion-item no-lines [style.background-color]="note.color">
       <p style="text-align: center"><img src="{{ photo }}"></p>
     </ion-item>
-    <ion-item no-lines [style.background-color]="this.currentColour">
+    <ion-item no-lines [style.background-color]="note.color">
       <p style="text-align: center"><img src="{{ photolibrary }}"></p>
     </ion-item>
-    <ion-item no-lines [style.background-color]="this.currentColour">
+    <ion-item no-lines [style.background-color]="note.color">
       <ion-input type="text" placeholder="Title" [(ngModel)]="note.title" name="title"></ion-input>
     </ion-item>
 
-    <ion-item no-lines [style.background-color]="this.currentColour">
-      <ion-textarea placeholder="Note" rows=12 [(ngModel)]="note.description" name="description"></ion-textarea>
-    </ion-item>
-    <ion-item no-lines>
-      {{ match }}
+    <ion-item no-lines [style.background-color]="note.color">
+      <ion-textarea placeholder="Note" rows=12 [(ngModel)]="note.description" name="description">{{note.description}}</ion-textarea>
     </ion-item>
   </ion-list>
 </ion-content>
@@ -52,7 +49,7 @@
       <ion-row>
         <ion-col style="text-align: center">
           <button ion-button icon-only clear (click)="createNote()" class="createbutton">
-              <ion-icon name="checkmark"></ion-icon>
+            <ion-icon name="checkmark"></ion-icon>
           </button>
         </ion-col>
       </ion-row>

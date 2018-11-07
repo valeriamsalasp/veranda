@@ -41,6 +41,8 @@ export class CreatePage {
 
   }
 
+  note ={title:"", description:"", user_id:0, color:""};
+
   ionViewDidLoad(){
     this.speechRecognition.hasPermission()
     .then((hasPermission: boolean) => {
@@ -74,7 +76,7 @@ export class CreatePage {
   }
  
   changeColour(colour) {
-    this.currentColour = colour;
+    this.note.color = colour;
   }
 
 
@@ -99,7 +101,7 @@ export class CreatePage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      this.note.image = 'data:image/jpeg;base64,' + imageData;
+      //this.note.image = 'data:image/jpeg;base64,' + imageData;
       console.log('photo');
     }, (error) => {
       console.log(error);
@@ -116,7 +118,7 @@ export class CreatePage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      this.note.image = 'data:image/jpeg;base64,' + imageData;
+     // this.note.image = 'data:image/jpeg;base64,' + imageData;
       console.log('photo from library');
     }, (error) => {
       console.log(error);

@@ -12,15 +12,28 @@ export class ViewNotePage {
   note = {
     title: "",
     description: "",
-    id: 0
+    color:""
   }
+  availableColours:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
     this.note = navParams.get('note');
+    this.availableColours = [
+      '#b4ecb4',
+      '#99dbef',
+      '#f7cac9',
+      '#a8a8a8',
+      '#91A8d0',
+      '#FFFFFF'
+    ];
   }
-
+  
   ionViewDidLoad() {
     console.log(this.note.id);
+  }
+
+  changeColour(colour) {
+    this.note.color = colour;
   }
 
   deleteNote() {

@@ -1,13 +1,13 @@
 <ion-header>
-  <ion-toolbar>
-    <button ion-button icon-only menuToggle left>
-      <ion-icon class="menubutton" name="menu"></ion-icon>
-    </button>
-    <ion-title style="text-align: center">
-      Notes
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar no-border-top>
+        <button ion-button icon-only menuToggle left>
+            <ion-icon class="menubutton" name="menu"></ion-icon>
+          </button>
+        <ion-searchbar placeholder="Filter Items" (ionInput)="filterItems($event)"></ion-searchbar>
+      </ion-toolbar>
 </ion-header>
+
+
 
 <ion-menu [content]="mycontent" type="overlay">
   <ion-content no-bounce>
@@ -37,13 +37,11 @@
 <ion-nav #mycontent [root]="rootPage"></ion-nav>
 
 <ion-content>
-  <ion-searchbar #mySearchbar (ionInput)="getItems($event)" [(ngModel)]="searchText" placeholder="Search your notes"
-    showCancelButton="true" (ionCancel)="onCancel(ev)" (ionClear)="onClear(ev)"> </ion-searchbar>
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let note of notes" col-6 no-padding>
         <ion-item-group>
-          <ion-card [style.background-color]="this.currentColour" (click)="getSingularNote(note)">
+          <ion-card [style.background-color]="note.color" (click)="getSingularNote(note)">
             <ion-card-header>
               {{note.title}}
             </ion-card-header>
