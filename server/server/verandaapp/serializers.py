@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 from .models import Note
+from drf_extra_fields.fields import Base64ImageField
+
 
 class UserSerializer(serializers.ModelSerializer):
 
@@ -31,8 +33,13 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 
-class NoteSerializer(serializers.ModelSerializer):
+# Create your models here.
 
+
+class NoteSerializer(serializers.ModelSerializer):
+    
+    image = Base64ImageField(max_length=None, required = False)
+    
     class Meta:
         model = Note
-        fields = ('id', 'title', 'description', 'user_id', 'color')
+        fields = ('id', 'title', 'description', 'user_id', 'color', 'image')

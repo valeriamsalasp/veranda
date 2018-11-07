@@ -26,10 +26,7 @@
 
   <ion-list lines=“none”>
     <ion-item no-lines [style.background-color]="note.color">
-      <p style="text-align: center"><img src="{{ photo }}"></p>
-    </ion-item>
-    <ion-item no-lines [style.background-color]="note.color">
-      <p style="text-align: center"><img src="{{ photolibrary }}"></p>
+      <p style="text-align: center"><img src="{{ note.image }}"></p>
     </ion-item>
     <ion-item no-lines [style.background-color]="note.color">
       <ion-input type="text" placeholder="Title" [(ngModel)]="note.title" name="title"></ion-input>

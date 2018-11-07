@@ -29,7 +29,7 @@ export class RestProvider {
     this.getFromStorage().then((result) => {
       this.tokenHeader = {
         headers: new HttpHeaders({
-          'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data',
           'Authorization': 'Bearer ' + result
         })
       };
