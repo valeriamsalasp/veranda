@@ -12,7 +12,8 @@ export class ViewNotePage {
   note = {
     title: "",
     description: "",
-    color:""
+    color:"",
+    id: ""
   }
   availableColours:any;
 

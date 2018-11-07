@@ -68,8 +68,7 @@ export class CreatePage {
       language: 'en-US'
     }
     this.speechRecognition.startListening().subscribe((matches: Array<string>) => {
-      this.note.description= this.note.description + matches[0];
-      console.log(matches)
+      this.note.description= this.note.description + " " + matches[0];
       this.cd.detectChanges();
     });
     this.isRecording = true;
