@@ -18,7 +18,13 @@ page-create {
     }
     
     input[type="text"]{
-        font-size:25px;
+        font-size:23px;
+    }
+    .center{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
     }
 
 }

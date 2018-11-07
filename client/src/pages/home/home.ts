@@ -5,12 +5,17 @@ import { LoginPage } from '../login/login';
 import { RestProvider } from '../../providers/rest/rest';
 import { ViewNotePage } from '../view-note/view-note';
 import { _appIdRandomProviderFactory } from '@angular/core/src/application_tokens';
+import { ViewChild } from '@angular/core';
+import { Searchbar } from 'ionic-angular'; 
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+
+  @ViewChild('mySearchbar') searchbar: Searchbar;
+
   searchText: string;
   notes: any;
   currentColour: string = '#ffffff';
@@ -40,7 +45,7 @@ export class HomePage {
   }
 
   initializeItems() {
-    this.items=this.notes;
+    this.notes;
   }
 
   getItems(ev: any) {
@@ -57,8 +62,9 @@ export class HomePage {
   }
 
   onCancel(ev) {
-    this.initializeItems();
+    this.searchbar.value='';
   }
+
 
   ionViewDidEnter() {
     this.getNotes()

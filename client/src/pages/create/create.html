@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar [color]="isRecording ? 'green' : 'red'">
     <ion-title>
       New note
     </ion-title>
@@ -8,11 +8,16 @@
 
 <ion-content padding no-bounce [style.background-color]="this.currentColour">
   <ion-list inset>
-    <ion-buttons>
+    <ion-buttons class="center">
       <button *ngFor="let colour of availableColours" color="light" icon-only ion-button outline (click)="changeColour(colour)">
         <ion-icon [style.color]="colour" name="water"></ion-icon>
       </button>
     </ion-buttons>
+    <ion-buttons class="center">
+        <button ion-button icon-only clear (click)="startListening()"><ion-icon name="mic"></ion-icon></button>
+        <button ion-button icon-only clear (click)="stopListening()" *ngIf="isIos()"><ion-icon name="mic-off"></ion-icon></button>
+        <button ion-button icon-only clear (click)="getPermission()"><ion-icon name="lock"></ion-icon></button>
+      </ion-buttons>
   </ion-list>
   <br>
 
@@ -25,12 +30,16 @@
       <ion-textarea placeholder="Note" rows=12 [(ngModel)]="note.description" name="description"></ion-textarea>
     </ion-item>
 
+    <ion-item *ngFor="let match of matches">
+      {{ match }}
+    </ion-item>
+
     <ion-item no-lines [style.background-color]="this.currentColour">
       <p style="text-align: center"><img src="{{ photo }}"></p>
     </ion-item>
     <ion-item no-lines [style.background-color]="this.currentColour">
-        <p style="text-align: center"><img src="{{ photolibrary }}"></p>
-      </ion-item>
+      <p style="text-align: center"><img src="{{ photolibrary }}"></p>
+    </ion-item>
   </ion-list>
 </ion-content>
 
@@ -49,18 +58,18 @@
 </ion-footer>
 
 <ion-fab right bottom>
-    <button ion-fab mini class="crbutton">
-      <ion-icon name="add"></ion-icon>
+  <button ion-fab mini class="crbutton">
+    <ion-icon name="add"></ion-icon>
+  </button>
+  <ion-fab-list side="top">
+    <button ion-button icon-only clear outline (click)="addPhoto()" class="createbutton">
+      <ion-icon name="photos"></ion-icon>
     </button>
-    <ion-fab-list side="top">
-      <button ion-button icon-only clear outline (click)="addPhoto()" class="createbutton">
-        <ion-icon name="photos"></ion-icon>
-      </button>
-      <button ion-button icon-only clear outline (click)="takePhoto()" class="createbutton">
-        <ion-icon name="camera"></ion-icon>
-      </button>
-      <button ion-button icon-only clear outline (click)="canvas()" class="createbutton">
-        <ion-icon name="color-wand"></ion-icon>
-      </button>
-    </ion-fab-list>
-  </ion-fab>
+    <button ion-button icon-only clear outline (click)="takePhoto()" class="createbutton">
+      <ion-icon name="camera"></ion-icon>
+    </button>
+    <button ion-button icon-only clear outline (click)="canvas()" class="createbutton">
+      <ion-icon name="color-wand"></ion-icon>
+    </button>
+  </ion-fab-list>
+</ion-fab>

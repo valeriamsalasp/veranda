@@ -17,6 +17,7 @@ import { RestProvider } from '../providers/rest/rest';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { StorageProvider } from '../providers/storage/storage';
 import { CanvasPage } from '../pages/canvas/canvas';
+import { SpeechRecognition } from '@ionic-native/speech-recognition';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { CanvasPage } from '../pages/canvas/canvas';
     RestProvider,
     Camera,
     PhotoLibrary,
+    SpeechRecognition
   ]
 })
 export class AppModule {}

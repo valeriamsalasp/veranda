@@ -24,9 +24,9 @@
           </ion-card-content>
         </ion-card>
       </ion-item>
-      <ion-item><button ion-button icon-end  (click)="showConfirm()" class="createbutton">
-          Log out
-          <ion-icon name="log-out"></ion-icon>
+      <ion-item>
+        <button ion-button icon-end (click)="showConfirm()" class="createbutton">
+          Log out <ion-icon name="log-out"></ion-icon>
         </button>
       </ion-item>
       <ion-item menuClose detail-none>Close Menu</ion-item>
@@ -37,8 +37,8 @@
 <ion-nav #mycontent [root]="rootPage"></ion-nav>
 
 <ion-content>
-  <ion-searchbar (ionInput)="getItems($event)" [(ngModel)]="searchText" placeholder="Search your notes"
-    showCancelButton="true" (ionClear)="onCancel(ev)"> </ion-searchbar>
+  <ion-searchbar #mySearchbar (ionInput)="getItems($event)" [(ngModel)]="searchText" placeholder="Search your notes"
+    showCancelButton="true" (ionCancel)="onCancel(ev)" (ionClear)="onClear(ev)"> </ion-searchbar>
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let note of notes" col-6 no-padding>
@@ -60,6 +60,6 @@
 
 <ion-footer>
   <button ion-button icon-only clear (click)="goCreate()" class="addbutton">
-    <ion-icon  name="create"></ion-icon>
+    <ion-icon name="create"></ion-icon>
   </button>
 </ion-footer>
