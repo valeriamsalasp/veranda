@@ -24,10 +24,7 @@
       <ion-textarea placeholder="Note" rows=12 [(ngModel)]="note.description" name="description">{{note.description}}</ion-textarea>
     </ion-item>
     <ion-item no-lines [style.background-color]="note.color">
-      <p style="text-align: center"><img src="{{ photo }}"></p>
-    </ion-item>
-    <ion-item no-lines [style.background-color]="note.color">
-      <p style="text-align: center"><img src="{{ photolibrary }}"></p>
+      <p style="text-align: center"><img src="{{ note.image }}"></p>
     </ion-item>
   </ion-list>
 </ion-content>

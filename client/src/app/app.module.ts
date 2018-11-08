@@ -14,11 +14,11 @@ import { RegisterPage } from '../pages/register/register';
 import { CreatePage } from '../pages/create/create';
 import { ViewNotePage } from '../pages/view-note/view-note'
 import { RestProvider } from '../providers/rest/rest';
-import { NativeStorage } from '@ionic-native/native-storage';
 import { StorageProvider } from '../providers/storage/storage';
 import { CanvasPage } from '../pages/canvas/canvas';
 import { IonicStorageModule } from '@ionic/storage';
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 
 
@@ -52,7 +52,6 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition';
   ],
   providers: [
     StatusBar,
-    NativeStorage,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider,
@@ -60,7 +59,8 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition';
     RestProvider,
     Camera,
     PhotoLibrary,
-    SpeechRecognition
+    SpeechRecognition,
+    NativeStorage
 
   ]
 })

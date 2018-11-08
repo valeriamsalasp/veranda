@@ -3,7 +3,7 @@
     <name>client</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://localhost:8100" />
+    <content original-src="index.html" src="http://192.168.1.7:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -91,7 +91,7 @@
         <variable name="REVERSED_CLIENT_ID" value="myreversedclientid" />
     </plugin>
     <plugin name="cordova-plugin-nativestorage" spec="2.3.2" />
-    <allow-navigation href="http://localhost:8100" sessionid="5a04a667" />
+    <allow-navigation href="http://192.168.1.7:8100" sessionid="5a04a667" />
     <plugin name="cordova-plugin-speechrecognition" spec="1.2.0" />
     <engine name="android" spec="^7.1.1" />
 </widget>
