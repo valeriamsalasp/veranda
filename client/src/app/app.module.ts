@@ -19,6 +19,7 @@ import { StorageProvider } from '../providers/storage/storage';
 import { CanvasPage } from '../pages/canvas/canvas';
 import { IonicStorageModule } from '@ionic/storage';
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
+import { NoteComponent } from '../components/note/note';
 
 
 
@@ -31,7 +32,8 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition';
     RegisterPage,
     ViewNotePage,
     CanvasDrawComponent,
-    CanvasPage
+    CanvasPage,
+    NoteComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition';
     RegisterPage,
     ViewNotePage,
     CanvasPage,
-    CanvasDrawComponent
+    CanvasDrawComponent,
+    NoteComponent
   ],
   providers: [
     StatusBar,

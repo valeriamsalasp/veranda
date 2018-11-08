@@ -28,7 +28,10 @@ page-home {
         text-align: center;
       }
     .card{
-        font-family: "Bahnschrift" !important; 
+        @font-face { 
+        font-family: "Bahnschrift" !important;
+        src: url("../assets/bahnschrift.ttf");
+         
+        }
     }
 }
-

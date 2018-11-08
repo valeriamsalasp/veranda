@@ -7,8 +7,6 @@
   </ion-toolbar>
 </ion-header>
 
-
-
 <ion-menu [content]="mycontent" type="overlay">
   <ion-content no-bounce>
     <ion-list>
@@ -37,7 +35,8 @@
 <ion-nav #mycontent [root]="rootPage"></ion-nav>
 
 <ion-content>
-  <ion-grid>
+  <note> </note>
+  <!-- <ion-grid>
     <ion-row>
       <ion-col *ngFor="let note of notes" col-6 no-padding>
         <ion-item-group>
@@ -52,10 +51,7 @@
         </ion-item-group>
       </ion-col>
     </ion-row>
-  </ion-grid>
-  <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
-    <ion-infinite-scroll-content></ion-infinite-scroll-content>
-  </ion-infinite-scroll> -->
+  </ion-grid> -->
 </ion-content>
 
 

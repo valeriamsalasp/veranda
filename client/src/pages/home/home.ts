@@ -6,6 +6,7 @@ import { RestProvider } from '../../providers/rest/rest';
 import { ViewNotePage } from '../view-note/view-note';
 import { _appIdRandomProviderFactory } from '@angular/core/src/application_tokens';
 import { StorageProvider } from '../../providers/storage/storage';
+import { NoteComponent } from '../../components/note/note';
 
 @Component({
   selector: 'page-home',
