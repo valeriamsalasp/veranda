@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ViewNotePage } from '../../pages/view-note/view-note'
+import { RestProvider } from '../../providers/rest/rest';
 
 @Component({
   selector: 'note',
@@ -16,8 +17,10 @@ export class NoteComponent {
     description: "",
     color: ""
   }
+  notes: any;
+
   
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
     this.userId = navParams.get('userId');
     this.availableColours = [
       '#b4ecb4',
@@ -29,6 +32,17 @@ export class NoteComponent {
     ];
   }
 
+  ionViewDidEnter() {
+    this.getNotes();
+  }
+
+  getNotes() {
+    this.restProvider.getNotes()
+      .then(data => {
+        this.notes = data;
+        console.log(this.items);
+      });
+  }
   getSingularNote(note) {
     this.navCtrl.push(ViewNotePage, { note: note });
     // this.restProvider.getSingularNote(this.note.id)
