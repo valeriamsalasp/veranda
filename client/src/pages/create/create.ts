@@ -54,7 +54,7 @@ export class CreatePage {
 
   startListening() {
     let options = {
-      language: 'en-US'
+      language: 'es-VE'
     }
     this.speechRecognition.hasPermission()
       .then((hasPermission: boolean) => {

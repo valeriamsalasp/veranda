@@ -55,5 +55,4 @@ export class ViewNotePage {
     });
     this.navCtrl.pop();
   }
-
 }

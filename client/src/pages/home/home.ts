@@ -7,6 +7,7 @@ import { ViewNotePage } from '../view-note/view-note';
 import { _appIdRandomProviderFactory } from '@angular/core/src/application_tokens';
 import { StorageProvider } from '../../providers/storage/storage';
 import { NoteComponent } from '../../components/note/note';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-home',
@@ -18,7 +19,6 @@ export class HomePage {
   @ViewChild('mySearchbar') searchbar: Searchbar;
 
   notes: any;
-  currentColour: string = '#ffffff';
   availableColours: any;
   note = {
     title: "",
@@ -29,7 +29,7 @@ export class HomePage {
   userId = 0;
   items: any;
 
-  constructor(public navCtrl: NavController, private viewCtrl: ViewController, public alertCtrl: AlertController, public restProvider: RestProvider, public navParams: NavParams, public storageProvider: StorageProvider) {
+  constructor(public navCtrl: NavController, private viewCtrl: ViewController, public alertCtrl: AlertController, public restProvider: RestProvider, public navParams: NavParams, public storageProvider: StorageProvider, public storage: Storage) {
     this.userId = navParams.get('userId');
     this.getSingularUser();
     this.availableColours = [
@@ -48,7 +48,6 @@ export class HomePage {
   }
 
   filterItems(ev: any) {
-    //zthis.setItems();\
     let val = ev.target.value;
 
     if (val && val.trim() !== '') {
@@ -58,27 +57,24 @@ export class HomePage {
     }
   }
 
-
   ionViewDidLoad() {
-    this.restProvider.getToken();
+    this.restProvider.setTokenHeader();
+  
   }
-
-
 
   onCancel(ev) {
     this.searchbar.value = '';
   }
 
-
   ionViewDidEnter() {
-    this.getNotes()
+    this.getNotes();
   }
 
   getNotes() {
     this.restProvider.getNotes()
       .then(data => {
         this.notes = data;
-        console.log(this.notes);
+        console.log(this.items);
       });
   }
 
@@ -110,7 +106,9 @@ export class HomePage {
         {
           text: 'Yes',
           handler: () => {
-            this.navCtrl.push(LoginPage);
+            this.restProvider.deleteFromStorage().then((result) => {
+              this.navCtrl.pop();
+            });
           }
         }
       ]
@@ -122,15 +120,8 @@ export class HomePage {
     this.navCtrl.push(ViewNotePage);
   }
 
-
   getSingularNote(note) {
     this.navCtrl.push(ViewNotePage, { note: note });
-    // this.restProvider.getSingularNote(this.note.id)
-    //   .then(data => {
-    //     this.notes = data;
-    //     console.log(this.notes);
-    //   });
-    // this.navCtrl.push(ViewNotePage);
   }
 }
 
