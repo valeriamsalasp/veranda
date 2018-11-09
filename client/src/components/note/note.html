@@ -1,8 +1,16 @@
-<ion-card [style.background-color]="note.color" (click)="getSingularNote(note)">
-  <ion-card-header>
-    {{note.title}}
-  </ion-card-header>
-  <ion-card-content>
-    {{note.description}}
-  </ion-card-content>
-</ion-card>
+<ion-grid>
+  <ion-row>
+    <ion-col *ngFor="let note of notes" col-6 no-padding>
+      <ion-item-group>
+        <ion-card [style.background-color]="note.color" (click)="getSingularNote(note)">
+          <ion-card-header>
+            {{note.title}}
+          </ion-card-header>
+          <ion-card-content>
+            {{note.description}}
+          </ion-card-content>
+        </ion-card>
+      </ion-item-group>
+    </ion-col>
+  </ion-row>
+</ion-grid>
