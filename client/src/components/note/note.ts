@@ -40,7 +40,7 @@ export class NoteComponent {
     this.restProvider.getNotes()
       .then(data => {
         this.notes = data;
-        console.log(this.items);
+        console.log(this.notes);
       });
   }
   getSingularNote(note) {

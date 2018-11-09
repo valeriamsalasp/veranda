@@ -9,6 +9,7 @@ import { StorageProvider } from '../../providers/storage/storage';
 import { NoteComponent } from '../../components/note/note';
 import { Storage } from '@ionic/storage';
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -74,7 +75,7 @@ export class HomePage {
     this.restProvider.getNotes()
       .then(data => {
         this.notes = data;
-        console.log(this.items);
+        console.log(this.notes);
       });
   }
 
